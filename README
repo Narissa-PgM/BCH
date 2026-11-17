@@ -1,0 +1,47 @@
+# Director of Advancement Services — Work Sample
+
+An interactive, independently designed work sample built for the **Director of
+Advancement Services** posting at **Boston College High School** (Office of
+Institutional Advancement).
+
+**Author:** Narissara Khomkhai
+**Live page:** https://narissa-pgm.github.io/BCH/Portflio
+
+---
+
+## What this is
+
+A working example of how I would approach the Director of Advancement Services
+role: the 27 duties in the posting, worked through against the Office of
+Institutional Advancement's mission, with every figure traceable.
+
+The artifact is organized around a single spine:
+
+- **Overview** — the job at a glance: mission, coverage of the posting, first-year plan
+- **Seven-stop committee route** — start with office controls, then open deeper models as decisions require
+- **Duty tiles** — one worked example per duty in the posting
+- **Playbook** — the reconciliation layer; every number in the page is traceable here
+
+## Important disclaimers
+
+- This is an **independently designed sample**. It is **not** an official system
+  of the Office of Institutional Advancement and **not** an adopted plan.
+- All figures are **illustrative samples**, not BC High forecasts, budgets, or
+  actual institutional data.
+- No confidential or personally identifiable donor information is used.
+
+## How to read it
+
+1. Open the live page and read the Overview first.
+2. Follow the seven-stop route if you want the decision-relevant path.
+3. Open any duty tile for the worked example.
+4. Check the Playbook for the source and reconciliation of any figure.
+
+## Tech
+
+Single-file HTML/CSS/JS, no build step, no external data. All content is
+self-contained in `index.html`.
+
+## Contact
+
+Narissara Khomkhai — [add email] — [add LinkedIn]
