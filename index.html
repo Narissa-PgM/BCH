@@ -550,16 +550,6 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="metric"><strong>3</strong><span>Advancement Services team</span><small>Director, DBA, stewardship</small></div>
  </div>
  <div class="metrics-note"><span>Public BC High facts and the posted team structure. Charts in the work samples use synthetic data.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
- <div class="index-bar"><p class="eyebrow">Contents</p></div>
-<nav class="contents" id="contents" aria-label="Contents">
-  <a href="#overview"><span>Plan</span><small>State, decisions and first 30 days</small></a>
-  <a href="#ops"><span>Operations</span><small>Batch, close, systems and data</small></a>
-  <a href="#projects"><span>Projects</span><small>Portfolio, priorities and gates</small></a>
-  <a href="#work"><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
-  <a href="#smarter"><span>SMARTER</span><small>The test behind each area</small></a>
-  <a href="#evidence"><span>Evidence</span><small>Reports, targets, readiness and gates</small></a>
-  <a href="#playbook"><span>Playbook</span><small>Definitions, lineage and report control</small></a>
- </nav>
 </section>
 
 <!-- OPERATIONS CONTROL ROOM -->
@@ -986,6 +976,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <button class="button primary" data-sample="full">Open the complete work sample ↗</button>
   <a class="button" href="BCH_Application_Summary.pdf" download>Download application summary</a>
   <a class="button" href="BCH_Sample_Reports.pdf" download>Download seven reports</a>
+  <a class="button" href="#data-dictionary">Data dictionary</a>
  </div>
  <div class="two">
   <div class="panel">
@@ -1391,11 +1382,6 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
     if (href === 'career-profile.html') { e.preventDefault(); open({kind: 'page', href}, a); return; }
     if (/\.pdf$/i.test(href)) { e.preventDefault(); open({kind: 'pdf', href, file: href, label: 'Seven sample reports (PDF)', direct: true}, a); return; }
     if (href.startsWith('data:application/pdf')) { e.preventDefault(); open({kind: 'pdf', href, file: a.getAttribute('download') || 'document.pdf', label: a.textContent.trim()}, a); return; }
-    if (href.startsWith('#') && href.length > 1) {
-      let id = href.slice(1); const inPop = a.closest('.jpop');
-      if (!document.getElementById(id)) return;
-      e.preventDefault(); open({kind: 'section', id, label: a.textContent.trim()}, inPop ? null : a);
-    }
   }, true);
   // links inside the popup clones point at the originals by data-src-id; resolve them the same way
 })();
@@ -1611,7 +1597,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  const nav = document.querySelector('.primary-nav');
  if (!menu || !nav) return;
  const MAP = {
-  '#overview':[['At a glance','overview'],['The plan','brief'],['Metrics','metrics'],['Contents','contents'],['30-day baseline','baseline']],
+  '#overview':[['At a glance','overview'],['The plan','brief'],['Metrics','metrics'],['30-day baseline','baseline']],
   '#ops':[['Batch board','ops-batch'],['Close and audit','ops-close'],['System health','ops-systems'],['Data quality','ops-quality']],
   '#projects':[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']],
   '#work':[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Prospect development','area-analytics'],['Staff and team','area-team'],['School partners','area-partners'],['Prospect development plan (detail)','pipeline']],
@@ -1663,7 +1649,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  const closeBtn = document.getElementById('ix-close');
  if (!dlg || !body || !openBtn) return;
  const GROUPS = [
-  ['Plan',[['At a glance','overview'],['The plan','brief'],['Metrics','metrics'],['Contents','contents'],['30-day baseline','baseline']]],
+  ['Plan',[['At a glance','overview'],['The plan','brief'],['Metrics','metrics'],['30-day baseline','baseline']]],
   ['Operations',[['Batch board','ops-batch'],['Close and audit','ops-close'],['System health','ops-systems'],['Data quality','ops-quality']]],
   ['Projects',[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']]],
   ['Role areas',[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Prospect development','area-analytics'],['Staff and team','area-team'],['School partners','area-partners'],['Prospect development plan (detail)','pipeline']]],
@@ -1704,7 +1690,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  const nav = [...document.querySelectorAll('.primary-nav a')];
  const main = document.querySelector('main.wrap');
  let current = 'overview';
- const childGroup = {metrics:'overview',contents:'overview',baseline:'overview','smarter-s':'smarter','smarter-m':'smarter','smarter-a':'smarter','smarter-r':'smarter','smarter-t':'smarter','smarter-er':'smarter'};
+ const childGroup = {metrics:'overview',baseline:'overview','smarter-s':'smarter','smarter-m':'smarter','smarter-a':'smarter','smarter-r':'smarter','smarter-t':'smarter','smarter-er':'smarter'};
  const groupFor = id => childGroup[id] || Object.keys(groups).find(g => groups[g].includes(id)) || null;
  const paint = (group, scroll) => {
   const ids = new Set(groups[group] || ['overview']);
