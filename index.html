@@ -143,6 +143,12 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .smarter-cap b{font-weight:700}
 .swot-legend{font-size:12.5px;color:var(--muted);margin:12px 0 0;padding:9px 12px;background:var(--soft);border-left:3px solid var(--gold)}
 .swot-legend b{color:var(--ink)}
+.duties{margin:10px 0 2px;padding-top:9px;border-top:1px solid var(--line)}
+.duties-cap{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 4px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.duties-cap b{font-weight:700}.duties-cap span{font-size:10px;letter-spacing:.03em;color:var(--muted);text-transform:none}
+.duties ol{list-style:none;counter-reset:duty;margin:0;padding:0;display:grid;gap:2px}
+.duties li{counter-increment:duty;display:grid;grid-template-columns:18px 1fr;gap:5px;font-size:11.5px;line-height:1.35;color:var(--muted)}
+.duties li::before{content:counter(duty,decimal-leading-zero);font-size:10px;font-weight:700;color:var(--accent)}
 .swot{margin:8px 0 10px;border:1px solid var(--line);background:var(--paper)}
 .swot summary{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:7px 8px;cursor:pointer;list-style:none;background:var(--soft);font-size:11.5px}
 .swot summary::-webkit-details-marker{display:none}
@@ -1661,6 +1667,30 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   el.className = 'swot';
   el.innerHTML = `<summary><span class="swot-label">SWOT</span><span class="urg ${d.u.toLowerCase()}">Urgency: ${d.u}</span><span class="swot-why">${d.why}</span></summary><div class="swot-grid"><div><h4>Strengths</h4>${list(d.s)}</div><div><h4>Weaknesses</h4>${list(d.w)}</div><div><h4>Opportunities</h4>${list(d.o)}</div><div><h4>Threats</h4>${list(d.t)}</div></div><p class="swot-action"><b>Priority action:</b> ${d.a}</p>`;
   if (block) block.after(el); else card.appendChild(el);
+ });
+})();
+
+/* ---------- responsibilities inside each role area ---------- */
+(function(){
+ const map = {
+  'Gift processing & fund management':'area-gifts',
+  'Database & systems':'area-data',
+  'Stewardship & donor relations':'area-stewardship',
+  'Prospects, pipeline & analytics':'area-analytics',
+  'Staff & departmental management':'area-team',
+  'School-wide partnership':'area-partners'
+ };
+ const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ document.querySelectorAll('#coverage .coverage-group').forEach(group => {
+  const title = group.querySelector('h3')?.firstChild?.textContent.trim();
+  const card = document.getElementById(map[title]); if (!card) return;
+  const duties = [...group.querySelectorAll('tbody tr th')].map(th => th.textContent.replace(/^\s*\d{1,2}\s*/, '').trim()).filter(Boolean);
+  if (!duties.length) return;
+  const box = document.createElement('div');
+  box.className = 'duties';
+  box.innerHTML = `<p class="duties-cap"><b>Responsibilities</b><span>${duties.length} duties</span></p><ol>${duties.map(d => `<li>${esc(d)}</li>`).join('')}</ol>`;
+  const smarter = card.querySelector('.smarter-block');
+  if (smarter) smarter.before(box); else card.querySelector('.card-desc')?.after(box);
  });
 })();
 
