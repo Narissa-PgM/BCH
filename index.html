@@ -1385,6 +1385,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   document.addEventListener('click', e => {
     const a = e.target.closest('a'); if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
     const href = a.getAttribute('href') || '';
+    if (a.hasAttribute('data-info')) return;
     if (a.hasAttribute('data-sample')) { e.preventDefault(); return; }               // the work-sample reader opens it; the page stays put
     if (a.closest('.primary-nav') || a.classList.contains('brand') || a.classList.contains('skip')) { if (href.startsWith('#')) { e.preventDefault(); fadeJump(href.slice(1)); } return; }
     if (href === 'career-profile.html') { e.preventDefault(); open({kind: 'page', href}, a); return; }
