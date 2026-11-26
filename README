@@ -24,8 +24,10 @@ The artifact is organized around a single spine:
 - **Pipeline management** — stages, new-prospect sources, research standards, portfolio cadence and 90-day plan
 - **SMARTER** — the test behind each area: specific, measurable, achievable, relevant, time-bound, evaluated and revised
 - **Evidence** — seven sample reports, four targets, 30-day readiness, 90-day plan, gates and coverage
-- **Playbook** — definitions, lineage, control totals, data dictionary and report control
+- **Playbook** — definitions, lineage, control totals, data dictionary and report control, with the complete work sample and downloads
 - **Duty tiles** — one worked example per duty in the posting
+
+Sections switch in place with a short fade. The page does not animate a long scroll when changing tabs. The Playbook carries the complete work sample and downloads.
 
 ## Important disclaimers
 
