@@ -87,6 +87,25 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .contents span{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin:6px 0 3px}
 .contents small{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
 .data-note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+/* Operations control room and project portfolio */
+.ops-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.ops-kpi{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:11px 13px}
+.ops-kpi strong{display:block;font-size:27px;line-height:1.05;color:var(--slate)}
+.ops-kpi span{display:block;font-size:13.5px;font-weight:700}.ops-kpi small{display:block;font-size:12px;color:var(--muted)}
+.ops-kpi.g{border-top-color:var(--green,#2f6f4f)}.ops-kpi.g strong{color:var(--green,#2f6f4f)}.ops-kpi.a{border-top-color:var(--gold)}.ops-kpi.a strong{color:var(--gold)}
+.ops-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}.ops-grid .panel{min-width:0}
+.ops-table{width:100%;border-collapse:collapse;font-size:13.5px}.ops-table th,.ops-table td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}.ops-table th{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.ops-table td:last-child{white-space:nowrap}
+.rag{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700;white-space:nowrap}.rag.g{background:#e3f1e8;color:#2f6f4f}.rag.a{background:var(--gold-pale);color:var(--gold)}.rag.p{background:var(--pale);color:var(--accent)}
+.ops-note{background:var(--pale);border-left:3px solid var(--accent);padding:9px 12px;font-size:13px;margin-top:14px}
+.ops-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.ops-mini>div{background:var(--soft);padding:8px 10px}.ops-mini b{display:block;font-size:20px;color:var(--accent)}.ops-mini span{font-size:12px;color:var(--muted)}
+.pm-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}.pm-table th,.pm-table td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.pm-table th{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.pm-table td:first-child{min-width:180px}.pm-charter{border-left:4px solid var(--accent);background:var(--soft);padding:14px 16px;margin-top:18px}
+.pm-charter .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}.pm-charter .meta>div{background:var(--paper);padding:8px 10px}.pm-charter .meta b{display:block;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.pm-charter .meta span{font-size:12.5px;font-weight:700}
+.pm-charter h3{font-size:23px;margin:2px 0 4px}.pm-charter h4{font-size:14px;color:var(--accent);margin:0 0 3px}.pm-charter p{font-size:12.5px;color:var(--muted)}.pm-charter ul{margin:0;padding-left:17px;font-size:12.5px;color:var(--muted);display:grid;gap:2px}
+.pm-miles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin-top:14px}.pm-mile{position:relative;padding:18px 8px 0 0;font-size:12px;color:var(--muted)}.pm-mile::before{content:'';position:absolute;top:4px;left:0;width:12px;height:12px;border-radius:50%;background:var(--paper);border:3px solid var(--slate)}.pm-mile.gate::before{border-color:var(--accent);background:var(--accent)}.pm-mile b{display:block;color:var(--ink);font-size:12.5px}.pm-mile span{display:block;color:var(--accent);font-weight:700;font-size:11px}
+@media(max-width:1000px){.ops-kpis{grid-template-columns:repeat(3,1fr)}.ops-grid{grid-template-columns:1fr}.pm-charter .meta{grid-template-columns:repeat(2,1fr)}.pm-miles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.ops-kpis{grid-template-columns:repeat(2,1fr)}.ops-mini{grid-template-columns:1fr}.pm-miles{grid-template-columns:repeat(2,1fr)}}
+
 
 /* Section blocks */
 .block{padding:52px 0 8px}
@@ -420,11 +439,11 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <a href="#overview" aria-current="true"><b>·</b><span class="w">Overview</span></a>
   <a href="#reports"><b>7</b><span class="w">Reports</span></a>
   <a href="#work"><b>S</b><span class="w">Specific</span></a>
-  <a href="#measures"><b>M</b><span class="w">Measurable</span></a>
-  <a href="#ready"><b>A</b><span class="w">Achievable</span></a>
+  <a href="#measures"><b>M</b><span class="w">Measures</span></a>
+  <a href="#ready"><b>A</b><span class="w">Ready</span></a>
   <a href="#value"><b>R</b><span class="w">Relevant</span></a>
   <a href="#approach"><b>T</b><span class="w">Time-bound</span></a>
-  <a href="#review"><b>E·R</b><span class="w">Evaluated &amp; revised</span></a>
+  <a href="#review"><b>E·R</b><span class="w">Review</span></a>
   <a href="#coverage"><b>27</b><span class="w">Coverage</span></a>
  </nav>
  <button class="theme" id="theme-toggle" aria-label="Switch to dark appearance">Light</button>
@@ -461,6 +480,8 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  <div class="metrics-note"><span>Career figures are from my own work history. Charts in the work samples use synthetic data; BC High facts link to the school’s own pages.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
  <nav class="contents" aria-label="Contents">
   <a href="#reports"><b>7</b><span>Sample reports</span><small>Seven complete issues, with charts</small></a>
+  <a href="#ops"><b>O</b><span>Operations</span><small>Batch, close, systems and data</small></a>
+  <a href="#projects"><b>P</b><span>Projects</span><small>Portfolio, priorities and gates</small></a>
   <a href="#work"><b>S</b><span>Specific</span><small>Six role areas, 27 responsibilities</small></a>
   <a href="#measures"><b>M</b><span>Measurable</span><small>Four targets, each defined</small></a>
   <a href="#ready"><b>A</b><span>Achievable</span><small>Readiness and decision rights</small></a>
@@ -469,6 +490,73 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <a href="#review"><b>E·R</b><span>Evaluated &amp; revised</span><small>Gates at days 30, 60, 90</small></a>
   <a href="#coverage"><b>27</b><span>Coverage</span><small>Every duty, with a work sample</small></a>
  </nav>
+</section>
+
+<!-- OPERATIONS CONTROL ROOM -->
+<section class="block" id="ops" aria-labelledby="ops-title">
+ <header class="block-head"><span class="letter" aria-hidden="true">O</span><div><p class="eyebrow">Operations control room · synthetic data</p><h2 id="ops-title">One view from batch to board</h2></div><p class="dek">The daily operating picture: what is in the queue, what is held, what the close needs and which system is not healthy. Dated February 22, 2027.</p></header>
+ <div class="ops-kpis">
+  <div class="ops-kpi"><strong>386</strong><span>Gifts this week</span><small>Through Sunday, Feb 21</small></div>
+  <div class="ops-kpi g"><strong>$212K</strong><span>Receipts this week</span><small>Posted and reconciled</small></div>
+  <div class="ops-kpi a"><strong>1</strong><span>Held batch</span><small>Stock confirmation</small></div>
+  <div class="ops-kpi g"><strong>$0</strong><span>Unexplained</span><small>January close</small></div>
+  <div class="ops-kpi"><strong>3</strong><span>Analysts</span><small>Every process has a backup</small></div>
+ </div>
+ <div class="ops-grid">
+  <div class="panel panel-top">
+   <h3>Batch board</h3>
+   <p class="caption">Every batch balances to its deposit before posting.</p>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>Batch</th><th>Source</th><th>Gifts</th><th>Amount</th><th>Status</th></tr></thead>
+    <tbody>
+     <tr><td>B-0222-01</td><td>Lockbox</td><td>48</td><td>$28,450</td><td><span class="rag g">Posted</span></td></tr>
+     <tr><td>B-0222-02</td><td>GiveCampus</td><td>126</td><td>$18,320</td><td><span class="rag g">Posted</span></td></tr>
+     <tr><td>B-0222-03</td><td>Stock and wires</td><td>2</td><td>$75,000</td><td><span class="rag a">Held</span></td></tr>
+     <tr><td>B-0222-04</td><td>Matching gifts</td><td>12</td><td>$9,600</td><td><span class="rag p">Verify</span></td></tr>
+    </tbody>
+   </table></div>
+  </div>
+  <div class="panel panel-top">
+   <h3>Close and audit runway</h3>
+   <p class="caption">The close is a calendar, not a month-end scramble.</p>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>Item</th><th>Due</th><th>Status</th></tr></thead>
+    <tbody>
+     <tr><td>January close</td><td>Feb 5</td><td><span class="rag g">Signed, day 5</span></td></tr>
+     <tr><td>February close</td><td>Mar 6</td><td><span class="rag a">In progress</span></td></tr>
+     <tr><td>FY26 audit requests</td><td>Rolling</td><td><span class="rag g">40 of 42 closed</span></td></tr>
+     <tr><td>Campaign pledges</td><td>Monthly</td><td><span class="rag p">18 active</span></td></tr>
+    </tbody>
+   </table></div>
+  </div>
+ </div>
+ <div class="ops-grid" style="margin-top:16px">
+  <div class="panel panel-top">
+   <h3>System health</h3>
+   <p class="caption">Every feed has a source, owner and failure path.</p>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>System</th><th>Cadence</th><th>Loaded</th><th>Held</th></tr></thead>
+    <tbody>
+     <tr><td>Raiser’s Edge / NXT</td><td>Nightly</td><td>All records</td><td><span class="rag g">0</span></td></tr>
+     <tr><td>GiveCampus</td><td>Daily</td><td>126</td><td><span class="rag g">0</span></td></tr>
+     <tr><td>Emma</td><td>Weekly</td><td>2,140</td><td><span class="rag a">1 suppressed</span></td></tr>
+     <tr><td>Almabase</td><td>Nightly</td><td>1,860</td><td><span class="rag a">46 class-year</span></td></tr>
+     <tr><td>Workday</td><td>Monthly</td><td>All funds</td><td><span class="rag g">0</span></td></tr>
+    </tbody>
+   </table></div>
+  </div>
+  <div class="panel panel-top">
+   <h3>Data quality and coverage</h3>
+   <p class="caption">Clean records are a daily control, not a cleanup project.</p>
+   <div class="ops-mini">
+    <div><b>1.9%</b><span>Audit error rate</span></div>
+    <div><b>38</b><span>Duplicate pairs</span></div>
+    <div><b>94.2%</b><span>Address validity</span></div>
+   </div>
+   <p class="caption" style="margin-top:12px">The 5% weekly sample drives a named refresher. Duplicates go to a person, never an automatic merge. Three analysts cover gift entry, records and reporting, with a named backup for each critical step.</p>
+  </div>
+ </div>
+ <div class="ops-note"><b>So what:</b> one held batch, one suppressed email and one class-year mapping are visible before they become a donor problem. The Director can see the queue, the close and the system health on one page.</div>
 </section>
 
 <!-- REPORTS -->
@@ -618,6 +706,111 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div><strong>Defer</strong><span>Core service would suffer. Schedule it later.</span></div>
   <div><strong>Stop</strong><span>No measurable benefit, or the risk is too high.</span></div>
  </div>
+</section>
+
+<!-- PROJECT PORTFOLIO -->
+<section class="block" id="projects" aria-labelledby="projects-title">
+ <header class="block-head"><span class="letter" aria-label="P">P</span><div><p class="eyebrow">Project portfolio · synthetic data</p><h2 id="projects-title">After the campaign, five projects and one portfolio</h2></div><p class="dek">The work after a completed campaign is not one more push. It is pledge collection, restricted-fund stewardship, a cleaner CRM and reporting the school can trust.</p></header>
+ <div class="ops-kpis">
+  <div class="ops-kpi"><strong>5</strong><span>Active projects</span><small>One owner and one benefit each</small></div>
+  <div class="ops-kpi a"><strong>2</strong><span>Amber</span><small>Pledge and NXT risk</small></div>
+  <div class="ops-kpi"><strong>Mar 26</strong><span>Next gate</span><small>Pledge reconciliation</small></div>
+  <div class="ops-kpi g"><strong>5</strong><span>Benefits tracked</span><small>Baseline and owner</small></div>
+  <div class="ops-kpi"><strong>3</strong><span>Analysts</span><small>Capacity limit</small></div>
+ </div>
+ <div class="panel panel-top">
+  <h3>Portfolio at a glance</h3>
+  <p class="caption">Status as of February 22, 2027. Campaign close and pledge work outrank every new project.</p>
+  <div class="table-scroll"><table class="pm-table">
+   <thead><tr><th>Project</th><th>Sponsor / lead</th><th>Phase</th><th>Status</th><th>Next gate</th><th>Benefit</th></tr></thead>
+   <tbody>
+    <tr><td><b>Campaign close and pledge collection</b></td><td>VP IA / Director</td><td>Execute</td><td><span class="rag g">Green</span></td><td>Pledge reconciliation<br>Mar 26</td><td>Pledges collected and restrictions honored</td></tr>
+    <tr><td><b>NXT optimization</b></td><td>Director / DBA</td><td>Design</td><td><span class="rag a">Amber</span></td><td>Release test<br>Apr 16</td><td>Fewer manual steps and cleaner releases</td></tr>
+    <tr><td><b>Data quality and duplicate cleanup</b></td><td>Director / Data Analyst</td><td>Execute</td><td><span class="rag a">Amber</span></td><td>95% address validity<br>Mar 19</td><td>Deliverability and lower duplicate rate</td></tr>
+    <tr><td><b>Board reporting modernization</b></td><td>VP IA / Director</td><td>Pilot</td><td><span class="rag g">Green</span></td><td>Partner sign-off<br>Apr 30</td><td>One board report with definitions</td></tr>
+    <tr><td><b>AI prospect scoring pilot</b></td><td>Director / Prospect Research</td><td>Pilot</td><td><span class="rag a">Amber</span></td><td>Validation<br>May 14</td><td>Better call list, human review</td></tr>
+   </tbody>
+  </table></div>
+ </div>
+
+ <h3 class="sub">Strategic prioritization</h3>
+ <p class="caption">Scored 1 to 5. Weighted score is out of 5. Fund the top four, keep the AI scoring work as a pilot, and stop it if validation fails.</p>
+ <div class="table-scroll"><table class="matrix">
+  <thead><tr><th style="text-align:left">Project</th><th>Strategic fit 30%</th><th>Risk 25%</th><th>Benefit 20%</th><th>Capacity 15%</th><th>Dependency 10%</th><th>Weighted</th><th>Decision</th></tr></thead>
+  <tbody>
+   <tr><th>Campaign close and pledge collection</th><td>5</td><td>5</td><td>5</td><td>4</td><td>4</td><td><b>4.75</b></td><td><span class="rag g">Fund</span></td></tr>
+   <tr><th>NXT optimization</th><td>4</td><td>4</td><td>4</td><td>3</td><td>5</td><td><b>4.00</b></td><td><span class="rag g">Fund</span></td></tr>
+   <tr><th>Data quality and duplicate cleanup</th><td>4</td><td>3</td><td>4</td><td>4</td><td>3</td><td><b>3.65</b></td><td><span class="rag g">Fund</span></td></tr>
+   <tr><th>Board reporting modernization</th><td>4</td><td>3</td><td>4</td><td>4</td><td>3</td><td><b>3.65</b></td><td><span class="rag g">Fund</span></td></tr>
+   <tr><th>AI prospect scoring pilot</th><td>3</td><td>2</td><td>4</td><td>2</td><td>2</td><td><b>2.70</b></td><td><span class="rag a">Pilot only</span></td></tr>
+  </tbody>
+ </table></div>
+
+ <div class="pm-charter">
+  <p class="eyebrow">Project charter</p>
+  <h3>Campaign close and pledge collection</h3>
+  <p class="caption">The campaign is complete. The remaining work is collecting what was pledged, honoring restrictions and showing donors what their gifts did.</p>
+  <div class="meta">
+   <div><b>Sponsor</b><span>VP, Institutional Advancement</span></div>
+   <div><b>Lead</b><span>Director, Advancement Services</span></div>
+   <div><b>Team</b><span>3 analysts, Finance, Major Giving</span></div>
+   <div><b>Gate</b><span>Reconciliation · Mar 26</span></div>
+  </div>
+  <div class="two">
+   <div><h4>Problem</h4><p>Pledges, restricted gifts and endowed funds must be collected and reported against the signed agreements. A manual reconciliation at the end of the campaign would hide exceptions and delay stewardship.</p></div>
+   <div><h4>Objective</h4><p>Reconcile every open pledge and restricted fund, produce the campaign close pack, and hand a clean stewardship list to Major Giving by June 30.</p></div>
+  </div>
+  <div class="two" style="margin-top:12px">
+   <div><h4>In scope</h4><ul><li>Open pledge schedule and reminders</li><li>Restricted and endowed fund tie-out</li><li>Campaign close pack and audit evidence</li><li>Stewardship list and donor impact data</li></ul></div>
+   <div><h4>Out of scope</h4><ul><li>New campaign planning</li><li>Gift acceptance policy changes</li><li>Investment management</li><li>Donor solicitation strategy</li></ul></div>
+  </div>
+  <div class="pm-miles">
+   <div class="pm-mile"><span>Mar 5</span><b>Pledge baseline</b>Schedule and owner</div>
+   <div class="pm-mile gate"><span>Mar 26</span><b>Reconciliation gate</b>Pledges and restrictions</div>
+   <div class="pm-mile"><span>Apr 16</span><b>Audit pack</b>Evidence indexed</div>
+   <div class="pm-mile"><span>May 14</span><b>Stewardship list</b>Major Giving review</div>
+   <div class="pm-mile"><span>Jun 11</span><b>Close pack</b>VP review</div>
+   <div class="pm-mile"><span>Jun 30</span><b>Campaign close</b>Signed handoff</div>
+  </div>
+  <div class="ops-note"><b>Gate:</b> no campaign close until every open pledge has a schedule, every restricted gift has a designation, every endowed fund ties to the ledger, and Finance signs the close pack.</div>
+  <div class="ops-mini">
+   <div><b>100%</b><span>Pledges with a schedule</span></div>
+   <div><b>$0</b><span>Unexplained restrictions</span></div>
+   <div><b>Jun 30</b><span>Signed campaign close</span></div>
+  </div>
+ </div>
+
+ <h3 class="sub">RAID and benefits</h3>
+ <div class="two">
+  <div class="panel">
+   <h3>RAID</h3>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>Risk</th><th>Owner</th><th>Mitigation</th><th>Review</th></tr></thead>
+    <tbody>
+     <tr><td>Pledge schedule missing or unsigned</td><td>Director</td><td>Agreement review with Major Giving</td><td>Mar 5</td></tr>
+     <tr><td>Restricted gift posted to the wrong fund</td><td>Director and Finance</td><td>Parallel tie-out and second reviewer</td><td>Mar 26</td></tr>
+     <tr><td>NXT release conflicts with close</td><td>Director and IT</td><td>Release freeze during close</td><td>Apr 16</td></tr>
+     <tr><td>Duplicate records split a pledge</td><td>Data Analyst</td><td>Match rules and manual merge review</td><td>Mar 19</td></tr>
+     <tr><td>Board report uses a different definition</td><td>Director</td><td>One definition and Finance sign-off</td><td>Apr 30</td></tr>
+     <tr><td>Prospect score encodes bias</td><td>Prospect Research</td><td>Holdout test and human review</td><td>May 14</td></tr>
+    </tbody>
+   </table></div>
+  </div>
+  <div class="panel">
+   <h3>Benefits</h3>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>Project</th><th>Baseline</th><th>Target</th><th>Review</th></tr></thead>
+    <tbody>
+     <tr><td>Campaign close</td><td>18 open pledges</td><td>100% scheduled</td><td>Jun 30</td></tr>
+     <tr><td>NXT optimization</td><td>12 manual steps</td><td>8 or fewer</td><td>Apr 16</td></tr>
+     <tr><td>Data quality</td><td>94.2% address</td><td>95.0%</td><td>Mar 19</td></tr>
+     <tr><td>Board reporting</td><td>3 report versions</td><td>1 signed version</td><td>Apr 30</td></tr>
+     <tr><td>AI scoring</td><td>Baseline review</td><td>Validated lift</td><td>May 14</td></tr>
+    </tbody>
+   </table></div>
+  </div>
+ </div>
+ <p class="ops-note"><b>Annual portfolio review:</b> March request log, April scoring and capacity test, May portfolio decision with the VP, June published slate. The stop list is reviewed with the same rigor as the start list.</p>
 </section>
 
 <!-- Coverage + downloads -->
