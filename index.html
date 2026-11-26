@@ -80,7 +80,7 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .metrics-note{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted);padding:8px 0 0}
 
 /* Contents index */
-.contents{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin:26px 0 8px}
+.contents{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:26px 0 8px}
 .contents a{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 12px 13px;text-decoration:none;color:var(--ink);min-height:100%}
 .contents a:hover{border-color:var(--accent)}
 .contents b{display:block;font-size:26px;line-height:1;color:var(--accent)}
@@ -94,6 +94,15 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .subindex a:hover,.subindex a:focus-visible{background:var(--pale);color:var(--ink)}
 .subindex a b{color:var(--accent);font-size:11px}
 .primary-nav a:hover::after,.primary-nav a[aria-current]::after{content:'▾';font-size:9px;margin-left:2px;color:var(--muted);vertical-align:2px}
+.ev-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ev-card{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:14px 16px;text-decoration:none;color:var(--ink)}
+.ev-card:hover{border-color:var(--accent)}
+.ev-card b{display:block;font-size:16px;color:var(--accent);margin-bottom:3px}.ev-card span{display:block;font-size:13px;color:var(--muted)}
+.smarter-strip{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
+.smarter-strip div{display:grid;grid-template-columns:20px 1fr;gap:5px;background:var(--soft);padding:4px 6px;font-size:11.5px;line-height:1.3;min-width:0}
+.smarter-strip b{display:grid;place-items:center;width:19px;height:19px;background:var(--pale);color:var(--accent);font-size:10.5px}
+.smarter-strip span{color:var(--muted)}.smarter-strip strong{color:var(--ink)}
+@media(max-width:900px){.ev-index{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.ev-index{grid-template-columns:1fr}.smarter-strip{grid-template-columns:1fr}}
 /* Operations control room and project portfolio */
 .ops-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 18px}
 .ops-kpi{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:11px 13px}
@@ -444,14 +453,10 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  <a href="#overview" class="brand" aria-label="Narissara Khomkhai, overview"><span class="monogram" aria-hidden="true">NK</span><span class="brand-name">Narissara Khomkhai</span></a>
  <nav class="primary-nav" aria-label="Portfolio index, organized by SMARTER">
   <a href="#overview" aria-current="true"><b>·</b><span class="w">Overview</span></a>
-  <a href="#reports"><b>7</b><span class="w">Reports</span></a>
-  <a href="#work"><b>S</b><span class="w">Specific</span></a>
-  <a href="#measures"><b>M</b><span class="w">Measures</span></a>
-  <a href="#ready"><b>A</b><span class="w">Ready</span></a>
-  <a href="#value"><b>R</b><span class="w">Relevant</span></a>
-  <a href="#approach"><b>T</b><span class="w">Time-bound</span></a>
-  <a href="#review"><b>E·R</b><span class="w">Review</span></a>
-  <a href="#coverage"><b>27</b><span class="w">Coverage</span></a>
+  <a href="#ops"><b>O</b><span class="w">Operations</span></a>
+  <a href="#projects"><b>P</b><span class="w">Projects</span></a>
+  <a href="#work"><b>R</b><span class="w">Role areas</span></a>
+  <a href="#evidence"><b>E</b><span class="w">Evidence</span></a>
  </nav>
  <button class="theme" id="theme-toggle" aria-label="Switch to dark appearance">Light</button>
  <div class="subindex" id="subindex" aria-label="Section sub-index" hidden></div>
@@ -487,15 +492,10 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  </div>
  <div class="metrics-note"><span>Career figures are from my own work history. Charts in the work samples use synthetic data; BC High facts link to the school’s own pages.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
  <nav class="contents" aria-label="Contents">
-  <a href="#reports"><b>7</b><span>Sample reports</span><small>Seven complete issues, with charts</small></a>
   <a href="#ops"><b>O</b><span>Operations</span><small>Batch, close, systems and data</small></a>
   <a href="#projects"><b>P</b><span>Projects</span><small>Portfolio, priorities and gates</small></a>
-  <a href="#work"><b>S</b><span>Specific</span><small>Six role areas, 27 responsibilities</small></a>
-  <a href="#measures"><b>M</b><span>Measurable</span><small>Four targets, each defined</small></a>
-  <a href="#ready"><b>A</b><span>Achievable</span><small>Readiness and decision rights</small></a>
-  <a href="#value"><b>R</b><span>Relevant</span><small>BC High’s campaign and aid</small></a>
-  <a href="#approach"><b>T</b><span>Time-bound</span><small>The first 90 days</small></a>
-  <a href="#review"><b>E·R</b><span>Evaluated &amp; revised</span><small>Gates at days 30, 60, 90</small></a>
+  <a href="#work"><b>R</b><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
+  <a href="#evidence"><b>E</b><span>Evidence</span><small>Reports, targets, readiness and gates</small></a>
   <a href="#coverage"><b>27</b><span>Coverage</span><small>Every duty, with a work sample</small></a>
  </nav>
 </section>
@@ -567,6 +567,19 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  <div class="ops-note"><b>So what:</b> one held batch, one suppressed email and one class-year mapping are visible before they become a donor problem. The Director can see the queue, the close and the system health on one page.</div>
 </section>
 
+<!-- EVIDENCE -->
+<section class="block" id="evidence" aria-labelledby="evidence-title">
+ <header class="block-head"><span class="letter" aria-hidden="true">E</span><div><p class="eyebrow">Evidence · how I would prove it</p><h2 id="evidence-title">Reports, targets, readiness and gates</h2></div><p class="dek">The role areas are the work. This is the evidence layer behind them: what I would produce, how success is measured, how I earn production access and where the gates sit.</p></header>
+ <div class="ev-index">
+  <a class="ev-card" href="#reports"><b>Seven sample reports</b><span>Daily, weekly, monthly, board, pledge, endowment and data-health issues</span></a>
+  <a class="ev-card" href="#measures"><b>Four targets</b><span>Definitions, deadlines and pilot economics</span></a>
+  <a class="ev-card" href="#ready"><b>Ready by day 30</b><span>Test access, parallel batch and decision rights</span></a>
+  <a class="ev-card" href="#approach"><b>First 90 days</b><span>Baseline, one complete cycle, scale decision</span></a>
+  <a class="ev-card" href="#review"><b>Three gates</b><span>Day 30, day 60 and day 90 with evidence</span></a>
+  <a class="ev-card" href="#coverage"><b>27 responsibilities</b><span>Every duty with prior experience and a work sample</span></a>
+ </div>
+</section>
+
 <!-- REPORTS -->
 <section class="block" id="reports" aria-labelledby="reports-title">
  <header class="block-head"><span class="letter wide" aria-hidden="true">7</span><div><p class="eyebrow">Sample reports · synthetic data</p><h2 id="reports-title">Seven sample reports, from the daily batch to the board</h2></div><p class="dek">What the office would receive from me, dated February 2027 as if about six weeks into the role. One synthetic dataset sized to BC High, so every number agrees.</p></header>
@@ -576,7 +589,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
 
 <!-- S -->
 <section class="block" id="work" aria-labelledby="work-title">
- <header class="block-head"><span class="letter" aria-hidden="true">S</span><div><p class="eyebrow">Specific</p><h2 id="work-title">Six areas of the role, 27 responsibilities</h2></div><p class="dek">Each square is one responsibility in the job description. Select an area to jump to it.</p></header>
+ <header class="block-head"><span class="letter" aria-hidden="true">R</span><div><p class="eyebrow">Role areas</p><h2 id="work-title">Six areas of the role, 27 responsibilities</h2></div><p class="dek">The six areas organize the work. Each card carries its own SMARTER strip: the duties, the measure, the readiness, the BC High context, the 90-day milestone and the gate.</p></header>
  <div class="waffle" role="list"><a class="wgroup" role="listitem" href="#area-gifts" style="--n:5" aria-label="Gift processing & fund management: 5 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><b>Gift processing</b><small>5 responsibilities</small></a><a class="wgroup" role="listitem" href="#area-data" style="--n:8" aria-label="Database & systems: 8 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><b>Database &amp; systems</b><small>8 responsibilities</small></a><a class="wgroup" role="listitem" href="#area-stewardship" style="--n:5" aria-label="Stewardship & donor relations: 5 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><b>Stewardship</b><small>5 responsibilities</small></a><a class="wgroup" role="listitem" href="#area-analytics" style="--n:4" aria-label="Prospects, pipeline & analytics: 4 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i></span><b>Pipeline &amp; analytics</b><small>4 responsibilities</small></a><a class="wgroup" role="listitem" href="#area-team" style="--n:3" aria-label="Staff & departmental management: 3 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i><i></i></span><b>Staff &amp; team</b><small>3 responsibilities</small></a><a class="wgroup" role="listitem" href="#area-partners" style="--n:2" aria-label="School-wide partnership: 2 responsibilities"><span class="cells" aria-hidden="true"><i></i><i></i></span><b>School partners</b><small>2 responsibilities</small></a></div>
  <div class="work-grid"><article class="work-card" id="area-gifts"><div class="card-meta"><b>01</b><span>5 responsibilities</span></div><h3>Gift processing &amp; fund management</h3><p class="card-desc">Primary gift processing, final close review, fund and pledge controls, audit reporting.</p><div class="visual"><span class="visual-label">SYNTHETIC PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="SAMPLE June close. Finance posted 48,000 dollars plus a 4,500 dollar settlement equals 52,500 dollars gross gifts."><text x="12" y="21" class="v-muted" font-size="11">June close · gross receipts</text><rect x="12" y="35" width="264" height="25" rx="5" class="v-accent"/><text x="22" y="52" class="v-white" font-size="12">$48,000 posted</text><rect x="276" y="35" width="25" height="25" rx="5" class="v-pale"/><text x="12" y="86" class="v-strong" font-size="13">+ $4,500 settlement</text><text x="12" y="111" class="v-accent-text" font-size="19">$52,500 certified gross</text><text x="246" y="111" class="v-muted" font-size="12">$0 variance</text></svg></div><ul class="chips"><li>Primary processing</li><li>Funds &amp; pledges</li><li>Close &amp; audit</li></ul><p class="proof"><b>UAMS</b> · gift controls and gift-to-ledger reconciliation</p><a class="card-action" href="#sample-gift-close" data-sample="gift-close">Open gift operations &amp; controls <span aria-hidden="true">↗</span></a></article><article class="work-card" id="area-data"><div class="card-meta"><b>02</b><span>8 responsibilities</span></div><h3>Database &amp; systems</h3><p class="card-desc">Trustworthy donor records, integrations and reporting definitions.</p><div class="visual"><span class="visual-label">ILLUSTRATIVE PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="Illustrative CRM control flow. Source records pass duplicate, designation and access checks before release."><rect x="10" y="20" width="84" height="83" rx="5" class="v-soft"/><text x="22" y="43" class="v-muted" font-size="10">SOURCE</text><text x="22" y="67" class="v-strong" font-size="13">Gift feed</text><text x="22" y="88" class="v-muted" font-size="11">Record IDs</text><path d="M94 62H119M234 62H260" class="v-path"/><rect x="119" y="9" width="115" height="105" rx="5" class="v-pale"/><text x="132" y="31" class="v-accent-text" font-size="10">RELEASE CHECKS</text><text x="132" y="54" class="" font-size="11">✓ Duplicate key</text><text x="132" y="76" class="" font-size="11">✓ Fund code</text><text x="132" y="98" class="" font-size="11">✓ Access role</text><rect x="260" y="20" width="90" height="83" rx="5" class="v-soft"/><text x="273" y="43" class="v-muted" font-size="10">OUTPUT</text><text x="273" y="67" class="v-strong" font-size="13">Certified</text><text x="273" y="88" class="v-muted" font-size="11">Donor record</text></svg></div><ul class="chips"><li>Import checks</li><li>Data quality</li><li>Dashboard wireframe</li></ul><p class="proof"><b>UAMS + Harvard</b> · records governance and shared reporting</p><a class="card-action" href="#sample-crm-controls" data-sample="crm-controls">Open the CRM controls <span aria-hidden="true">↗</span></a></article><article class="work-card" id="area-stewardship"><div class="card-meta"><b>03</b><span>5 responsibilities</span></div><h3>Stewardship &amp; donor relations</h3><p class="card-desc">Connect donor intent, verified outcomes and reconciled financials.</p><div class="visual"><span class="visual-label">SYNTHETIC PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="Synthetic scholarship fund report. 15,000 dollars awarded and 3,000 dollars reserved from 18,000 dollars available, with four reporting checks: donor intent, impact verified, financials tie out, next report."><text x="12" y="20" class="v-muted" font-size="12">Scholarship fund · $18k available</text><rect x="12" y="32" width="280" height="20" rx="3" class="v-accent"/><rect x="292" y="32" width="56" height="20" rx="3" class="v-gold"/><text x="12" y="74" class="v-strong" font-size="14">$15k awarded</text><text x="348" y="74" class="v-muted" font-size="13" text-anchor="end">$3k reserved</text><text x="12" y="100" font-size="12.5"><tspan class="v-accent-text">✓</tspan> Donor intent</text><text x="190" y="100" font-size="12.5"><tspan class="v-accent-text">✓</tspan> Impact verified</text><text x="12" y="122" font-size="12.5"><tspan class="v-accent-text">✓</tspan> Financials tie out</text><text x="190" y="122" font-size="12.5"><tspan class="v-accent-text">✓</tspan> Next report</text></svg></div><ul class="chips"><li>Donor report</li><li>Reporting commitments</li><li>Service tiers</li></ul><p class="proof"><b>UAMS</b> · endowed and restricted-fund reporting with gift officers</p><a class="card-action" href="#sample-donor-report" data-sample="donor-report">Open the donor report <span aria-hidden="true">↗</span></a></article><article class="work-card" id="area-analytics"><div class="card-meta"><b>04</b><span>4 responsibilities</span></div><h3>Prospects, pipeline &amp; analytics</h3><p class="card-desc">Turn pipeline signals into priorities, scenarios and next moves.</p><div class="visual"><span class="visual-label">ILLUSTRATIVE PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="Illustrative pipeline review separates certified receipts, pledges and open-proposal scenarios. The forecast band is a conceptual preview, not a prediction."><path d="M28 15V97H342M28 72H342M28 47H342" class="v-grid"/><path d="M28 91L86 85L145 70L203 59L260 32L337 17L337 65L260 68L203 71L145 83L86 91Z" class="v-pale"/><path d="M28 91L86 85L145 76L203 65L260 51L337 38" class="v-path" stroke-dasharray="5 4"/><path d="M28 94L86 88L145 82L203 71" class="v-path"/><text x="30" y="119" class="v-strong" font-size="11">Recorded receipts</text><text x="204" y="119" class="v-muted" font-size="11">Proposal scenarios</text><text x="231" y="15" class="v-muted" font-size="9">ILLUSTRATIVE</text></svg></div><ul class="chips"><li>Pipeline review</li><li>Forecast lab</li><li>Campaign gauge</li></ul><p class="proof"><b>Harvard FAS</b> · governed reporting · <b>UAMS</b> · prospect research</p><a class="card-action" href="#sample-pipeline-decisions" data-sample="pipeline-decisions">Open the analytics case <span aria-hidden="true">↗</span></a></article><article class="work-card" id="area-team"><div class="card-meta"><b>05</b><span>3 responsibilities</span></div><h3>Staff &amp; departmental management</h3><p class="card-desc">Protect core services while improving coverage and cross-training.</p><div class="visual"><span class="visual-label">ILLUSTRATIVE PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="Illustrative review coverage matrix for the director, database administrator and stewardship officer across intake, close and reports."><text x="164" y="20" class="v-muted" font-size="11">Intake</text><text x="231" y="20" class="v-muted" font-size="11">Close</text><text x="294" y="20" class="v-muted" font-size="11">Reports</text><text x="12" y="49" class="v-strong" font-size="12">Director</text><rect x="164" y="33" width="45" height="23" rx="5" class="v-pale"/><text x="180" y="49" class="v-accent-text" font-size="12">○</text><rect x="230" y="33" width="45" height="23" rx="5" class="v-accent"/><text x="246" y="49" class="v-white" font-size="12">●</text><rect x="296" y="33" width="45" height="23" rx="5" class="v-pale"/><text x="312" y="49" class="v-accent-text" font-size="12">○</text><text x="12" y="81" class="v-strong" font-size="12">Database admin</text><rect x="164" y="65" width="45" height="23" rx="5" class="v-accent"/><text x="180" y="81" class="v-white" font-size="12">●</text><rect x="230" y="65" width="45" height="23" rx="5" class="v-pale"/><text x="246" y="81" class="v-accent-text" font-size="12">○</text><rect x="296" y="65" width="45" height="23" rx="5" class="v-pale"/><text x="312" y="81" class="v-accent-text" font-size="12">○</text><text x="12" y="113" class="v-strong" font-size="12">Stewardship</text><rect x="164" y="97" width="45" height="23" rx="5" class="v-pale"/><text x="180" y="113" class="v-accent-text" font-size="12">○</text><rect x="230" y="97" width="45" height="23" rx="5" class="v-pale"/><text x="246" y="113" class="v-accent-text" font-size="12">○</text><rect x="296" y="97" width="45" height="23" rx="5" class="v-accent"/><text x="312" y="113" class="v-white" font-size="12">●</text></svg></div><ul class="chips"><li>90-day plan</li><li>Capacity model</li><li>Service levels</li></ul><p class="proof"><b>UAMS</b> · hired, supervised and reviewed three analysts</p><a class="card-action" href="#sample-team-delivery" data-sample="team-delivery">Open the team delivery plan <span aria-hidden="true">↗</span></a></article><article class="work-card" id="area-partners"><div class="card-meta"><b>06</b><span>2 responsibilities</span></div><h3>School-wide partnership</h3><p class="card-desc">Coordinate Finance, IT and Advancement around shared deadlines.</p><div class="visual"><span class="visual-label">ILLUSTRATIVE PREVIEW</span><svg viewBox="0 0 360 130" role="img" aria-label="Illustrative coordination map connecting Advancement Services with Finance, IT, gift officers and school partners."><path d="M85 27L180 65L275 27M85 103L180 65L275 103" class="v-path"/><rect x="123" y="40" width="114" height="49" rx="5" class="v-pale"/><text x="137" y="61" class="v-strong" font-size="12">Advancement</text><text x="148" y="78" class="v-strong" font-size="12">Services</text><rect x="10" y="7" width="100" height="31" rx="5" class="v-soft"/><text x="20" y="27" class="v-muted" font-size="11">Finance</text><rect x="250" y="7" width="100" height="31" rx="5" class="v-soft"/><text x="260" y="27" class="v-muted" font-size="11">IT</text><rect x="10" y="91" width="100" height="31" rx="5" class="v-soft"/><text x="20" y="111" class="v-muted" font-size="11">Gift officers</text><rect x="250" y="91" width="100" height="31" rx="5" class="v-soft"/><text x="260" y="111" class="v-muted" font-size="11">School partners</text></svg></div><ul class="chips"><li>Partner roles</li><li>Peak coverage</li><li>First-year calendar</li></ul><p class="proof"><b>Harvard FAS</b> · partnered across departments and central offices</p><a class="card-action" href="#sample-year" data-sample="year">Open the coordination calendar <span aria-hidden="true">↗</span></a></article></div>
 
@@ -1315,6 +1328,27 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   document.addEventListener('click', e => { const b = e.target.closest('.rp-b'); if (!b) return; const grid = b.closest('.rp-grid'), v = grid.querySelector('.rp-view'), inPop = !!b.closest('dialog'); v.style.opacity = 0; setTimeout(() => { grid.querySelectorAll('.rp-b').forEach(x => x.setAttribute('aria-selected', String(x === b))); v.innerHTML = html(b.dataset.rk); if (inPop) { const sc = b.closest('.jp-body'); if (sc) sc.scrollTop = 0; } else { const top = grid.getBoundingClientRect().top + scrollY - 90; if (scrollY > top) scrollTo({top, behavior: 'instant'}); } v.style.opacity = 1; }, 140); });
 })();
 
+/* ---------- SMARTER inside each role area ---------- */
+(function(){
+ const S = {
+  'area-gifts':[['S','5 duties'],['M','<strong>≥95%</strong> acknowledgments'],['A','Test batch and close'],['R','Campaign close'],['T','Day 30 parallel batch'],['E·R','Day 90 target']],
+  'area-data':[['S','8 duties'],['M','<strong>100%</strong> traceable releases'],['A','NXT test access'],['R','Shared definitions'],['T','Day 30 access map'],['E·R','Release gate']],
+  'area-stewardship':[['S','5 duties'],['M','<strong>312</strong> fund reports on time'],['A','Donor report review'],['R','Honor restrictions'],['T','Day 60 donor report'],['E·R','Report release gate']],
+  'area-analytics':[['S','4 duties'],['M','Validated forecast'],['A','Holdout test'],['R','Prospect priorities'],['T','Day 60 pipeline review'],['E·R','Validation gate']],
+  'area-team':[['S','3 duties'],['M','Two backups per process'],['A','Coverage matrix'],['R','Capacity'],['T','Day 30 coverage'],['E·R','Bench gate']],
+  'area-partners':[['S','2 duties'],['M','Weekly report on time'],['A','Named contacts'],['R','Finance and IT'],['T','Day 30 service levels'],['E·R','Partner review']]
+ };
+ document.querySelectorAll('.work-card').forEach(card => {
+  const rows = S[card.id]; if (!rows) return;
+  const strip = document.createElement('div');
+  strip.className = 'smarter-strip';
+  strip.setAttribute('aria-label','SMARTER for this role area');
+  strip.innerHTML = rows.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('');
+  const action = card.querySelector('.card-action');
+  if (action) card.insertBefore(strip, action); else card.appendChild(strip);
+ });
+})();
+
 /* ---------- top-nav sub-index ---------- */
 (function(){
  const menu = document.getElementById('subindex');
@@ -1322,14 +1356,10 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  if (!menu || !nav) return;
  const MAP = {
   '#overview':[['At a glance','overview'],['Metrics','overview'],['Contents','overview']],
-  '#reports':[['Seven sample reports','reports'],['Report index','reports']],
+  '#ops':[['Batch board','ops-batch'],['Close and audit','ops-close'],['System health','ops-systems'],['Data quality','ops-quality']],
+  '#projects':[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']],
   '#work':[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']],
-  '#measures':[['Four targets','targets'],['Pilot economics','pilot-econ']],
-  '#ready':[['30-day readiness','readiness'],['Decision rights','decision-rights']],
-  '#value':[['Campaign context','value'],['Four reporting commitments','value']],
-  '#approach':[['90-day plan','approach'],['Review gates','review']],
-  '#review':[['Three gates','review'],['Four outcomes','review']],
-  '#coverage':[['27 responsibilities','coverage']]
+  '#evidence':[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]
  };
  let timer, current = null;
  const close = () => { if (!menu) return; clearTimeout(timer); menu.hidden = true; nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-expanded','false')); current = null; };
