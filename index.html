@@ -87,6 +87,13 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .contents span{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin:6px 0 3px}
 .contents small{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
 .data-note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+/* Top-nav sub-index */
+.subindex{position:fixed;z-index:40;width:min(320px,calc(100vw - 32px));background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);box-shadow:0 12px 28px rgba(17,24,30,.18);padding:8px}
+.subindex .dh{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;padding:4px 8px 7px}
+.subindex a{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:7px 8px;font-size:13.5px;color:var(--ink);text-decoration:none}
+.subindex a:hover,.subindex a:focus-visible{background:var(--pale);color:var(--ink)}
+.subindex a b{color:var(--accent);font-size:11px}
+.primary-nav a:hover::after,.primary-nav a[aria-current]::after{content:'▾';font-size:9px;margin-left:2px;color:var(--muted);vertical-align:2px}
 /* Operations control room and project portfolio */
 .ops-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 18px}
 .ops-kpi{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:11px 13px}
@@ -447,6 +454,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <a href="#coverage"><b>27</b><span class="w">Coverage</span></a>
  </nav>
  <button class="theme" id="theme-toggle" aria-label="Switch to dark appearance">Light</button>
+ <div class="subindex" id="subindex" aria-label="Section sub-index" hidden></div>
 </div></header>
 
 <main class="wrap">
@@ -503,7 +511,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="ops-kpi"><strong>3</strong><span>Analysts</span><small>Every process has a backup</small></div>
  </div>
  <div class="ops-grid">
-  <div class="panel panel-top">
+  <div class="panel panel-top" id="ops-batch">
    <h3>Batch board</h3>
    <p class="caption">Every batch balances to its deposit before posting.</p>
    <div class="table-scroll"><table class="ops-table">
@@ -516,7 +524,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
     </tbody>
    </table></div>
   </div>
-  <div class="panel panel-top">
+  <div class="panel panel-top" id="ops-close">
    <h3>Close and audit runway</h3>
    <p class="caption">The close is a calendar, not a month-end scramble.</p>
    <div class="table-scroll"><table class="ops-table">
@@ -531,7 +539,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </div>
  </div>
  <div class="ops-grid" style="margin-top:16px">
-  <div class="panel panel-top">
+  <div class="panel panel-top" id="ops-systems">
    <h3>System health</h3>
    <p class="caption">Every feed has a source, owner and failure path.</p>
    <div class="table-scroll"><table class="ops-table">
@@ -545,7 +553,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
     </tbody>
    </table></div>
   </div>
-  <div class="panel panel-top">
+  <div class="panel panel-top" id="ops-quality">
    <h3>Data quality and coverage</h3>
    <p class="caption">Clean records are a daily control, not a cleanup project.</p>
    <div class="ops-mini">
@@ -592,12 +600,12 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
 <!-- M -->
 <section class="block" id="measures" aria-labelledby="measures-title">
  <header class="block-head"><span class="letter" aria-hidden="true">M</span><div><p class="eyebrow">Measurable</p><h2 id="measures-title">Four targets, each with a definition and a deadline</h2></div><p class="dek">Proposed targets. The baseline is measured in the first 30 days, then the VP approves the final numbers.</p></header>
- <div class="targets" role="table" aria-label="Proposed targets by deadline">
+ <div class="targets" id="targets" role="table" aria-label="Proposed targets by deadline">
   <div class="axis" role="row" aria-hidden="true"><span>Target</span><span>Measure</span><div class="ticks"><span style="left:0">Day 0</span><span style="left:16.667%">30</span><span style="left:33.333%">60</span><span style="left:50%">90</span><span style="left:100%">Month 6</span></div></div>
   <div class="trow" role="row"><span class="tval" role="cell">≥95%</span><span class="tname" role="cell"><b><button class="def" data-info="ack">Timely acknowledgments</button></b><small>Eligible gifts within 3 business days</small></span><div class="track" role="cell" aria-label="Baseline by day 30, target by day 90"><i class="gate" style="left:16.667%"></i><i class="gate" style="left:33.333%"></i><i class="gate" style="left:50%"></i><i class="base"></i><i class="bar" style="left:16.667%;width:33.33%"></i><span class="end" style="left:50.00%">by day 90</span></div></div><div class="trow" role="row"><span class="tval" role="cell">50%</span><span class="tname" role="cell"><b><button class="def" data-info="aged">Fewer aged exceptions</button></b><small>Open more than 10 business days</small></span><div class="track" role="cell" aria-label="Baseline by day 30, target by day 90"><i class="gate" style="left:16.667%"></i><i class="gate" style="left:33.333%"></i><i class="gate" style="left:50%"></i><i class="base"></i><i class="bar" style="left:16.667%;width:33.33%"></i><span class="end" style="left:50.00%">by day 90</span></div></div><div class="trow" role="row"><span class="tval" role="cell">100%</span><span class="tname" role="cell"><b><button class="def" data-info="trace">Traceable released figures</button></b><small>Source, period and reviewer</small></span><div class="track" role="cell" aria-label="Baseline by day 30, target every release"><i class="gate" style="left:16.667%"></i><i class="gate" style="left:33.333%"></i><i class="gate" style="left:50%"></i><i class="base"></i><i class="bar ongoing" style="left:16.667%;width:83.33%"></i><span class="end" style="right:6px;top:9px;line-height:16px;padding:0 6px;background:var(--paper);border-radius:3px">every release</span></div></div><div class="trow" role="row"><span class="tval" role="cell">30%</span><span class="tname" role="cell"><b><button class="def" data-info="close">Shorter close cycle</button></b><small>Median days to signed tie-out</small></span><div class="track" role="cell" aria-label="Baseline by day 30, target by month 6"><i class="gate" style="left:16.667%"></i><i class="gate" style="left:33.333%"></i><i class="gate" style="left:50%"></i><i class="base"></i><i class="bar" style="left:16.667%;width:83.33%"></i><span class="end" style="right:6px;top:9px;line-height:16px;padding:0 6px;background:var(--paper);border-radius:3px">by month 6</span></div></div>
   <div class="legend" style="margin-top:12px"><span><i style="background:repeating-linear-gradient(135deg,var(--soft) 0 3px,var(--line) 3px 5px)"></i>Baseline measured</span><span><i style="background:var(--accent)"></i>Improvement window</span><span><i style="background:var(--slate)"></i>Applies to every release</span><span>┊ Review gates at days 30, 60 and 90</span></div>
  </div>
- <div class="panel econ" style="margin-top:18px">
+ <div class="panel econ" id="pilot-econ" style="margin-top:18px">
   <div>
    <p class="eyebrow">Pilot economics · synthetic, base case</p>
    <div class="ebar"><span>Full cost</span><div class="t" style="width:75.2%"><span style="width:58.5%;background:var(--accent)">$11,000 cash</span><span style="width:41.5%;background:var(--neutral);color:var(--ink)">$7,800 staff time</span></div></div>
@@ -611,7 +619,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
 <!-- A -->
 <section class="block" id="ready" aria-labelledby="ready-title">
  <header class="block-head"><span class="letter" aria-hidden="true">A</span><div><p class="eyebrow">Achievable</p><h2 id="ready-title">Ready for independent work by day 30</h2></div><p class="dek">Learn the school’s systems in a test environment first, then earn sign-off for production work.</p></header>
- <div class="ramp">
+ <div class="ramp" id="readiness">
   <div class="step"><p class="when">Days 1–10</p><h3>Map NXT and access</h3><p>Gift types, fund codes, permissions, integrations and report definitions, with the DBA.</p></div>
   <div class="step"><p class="when">Days 11–20</p><h3>Rehearse in test</h3><p>Gift entry, corrections, receipts, import replay and reconciliation, using approved test records.</p></div>
   <div class="step"><p class="when">By day 30</p><h3>Show readiness</h3><p>A reviewed parallel batch and received-gift report, signed off before production work.</p></div>
@@ -621,7 +629,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="panel"><h3>What the plan needs</h3>
    <ul class="needs"><li>VP-approved scope and priorities</li><li>Least-privilege access to NXT and finance extracts</li><li>A safe test environment</li><li>Named reviewers in Finance and IT</li><li>Protected review time for the team</li></ul>
   </div>
-  <div class="panel"><h3>Who owns each decision</h3>
+  <div class="panel" id="decision-rights"><h3>Who owns each decision</h3>
    <div class="legend" style="margin:8px 0 4px"><span><span class="pill p" style="width:22px;height:22px;font-size:11px">P</span> Prepares</span><span><span class="pill v" style="width:22px;height:22px;font-size:11px">V</span> Verifies</span><span><span class="pill a" style="width:22px;height:22px;font-size:11px">A</span> Approves</span><span><span class="pill c" style="width:22px;height:22px;font-size:11px">C</span> Consulted</span></div>
    <div class="scroll-x"><table class="matrix"><thead><tr><th scope="col" style="text-align:left">Work</th><th scope="col">Director</th><th scope="col">DBA</th><th scope="col">Stewardship</th><th scope="col">Finance</th><th scope="col">IT</th><th scope="col">VP</th><th scope="col">Major Giving</th></tr></thead><tbody><tr><th scope="row">Gift processing</th><td><span class="pill p"><span class="sr-only">Prepares</span><span aria-hidden="true">P</span></span></td><td></td><td></td><td><span class="pill v"><span class="sr-only">Verifies</span><span aria-hidden="true">V</span></span></td><td></td><td></td><td></td></tr><tr><th scope="row">Routine reconciliation</th><td><span class="pill a"><span class="sr-only">Approves</span><span aria-hidden="true">A</span></span></td><td><span class="pill p"><span class="sr-only">Prepares</span><span aria-hidden="true">P</span></span></td><td></td><td><span class="pill v"><span class="sr-only">Verifies</span><span aria-hidden="true">V</span></span></td><td></td><td></td><td></td></tr><tr><th scope="row">Access and integration changes</th><td><span class="pill c"><span class="sr-only">Consulted</span><span aria-hidden="true">C</span></span></td><td><span class="pill p"><span class="sr-only">Prepares</span><span aria-hidden="true">P</span></span></td><td></td><td><span class="pill c"><span class="sr-only">Consulted</span><span aria-hidden="true">C</span></span></td><td><span class="pill a"><span class="sr-only">Approves</span><span aria-hidden="true">A</span></span></td><td></td><td></td></tr><tr><th scope="row">Donor impact report</th><td><span class="pill a"><span class="sr-only">Approves</span><span aria-hidden="true">A</span></span></td><td></td><td><span class="pill p"><span class="sr-only">Prepares</span><span aria-hidden="true">P</span></span></td><td><span class="pill v"><span class="sr-only">Verifies</span><span aria-hidden="true">V</span></span></td><td></td><td></td><td></td></tr><tr><th scope="row">Pledge terms and exceptions</th><td><span class="pill p"><span class="sr-only">Prepares</span><span aria-hidden="true">P</span></span></td><td></td><td></td><td><span class="pill c"><span class="sr-only">Consulted</span><span aria-hidden="true">C</span></span></td><td></td><td><span class="pill a"><span class="sr-only">Approves</span><span aria-hidden="true">A</span></span></td><td><span class="pill c"><span class="sr-only">Consulted</span><span aria-hidden="true">C</span></span></td></tr></tbody></table></div>
    <p class="caption">Proposed. School decision rights are confirmed during onboarding.</p>
@@ -718,7 +726,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="ops-kpi g"><strong>5</strong><span>Benefits tracked</span><small>Baseline and owner</small></div>
   <div class="ops-kpi"><strong>3</strong><span>Analysts</span><small>Capacity limit</small></div>
  </div>
- <div class="panel panel-top">
+ <div class="panel panel-top" id="project-portfolio">
   <h3>Portfolio at a glance</h3>
   <p class="caption">Status as of February 22, 2027. Campaign close and pledge work outrank every new project.</p>
   <div class="table-scroll"><table class="pm-table">
@@ -733,7 +741,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </table></div>
  </div>
 
- <h3 class="sub">Strategic prioritization</h3>
+ <h3 class="sub" id="project-priorities">Strategic prioritization</h3>
  <p class="caption">Scored 1 to 5. Weighted score is out of 5. Fund the top four, keep the AI scoring work as a pilot, and stop it if validation fails.</p>
  <div class="table-scroll"><table class="matrix">
   <thead><tr><th style="text-align:left">Project</th><th>Strategic fit 30%</th><th>Risk 25%</th><th>Benefit 20%</th><th>Capacity 15%</th><th>Dependency 10%</th><th>Weighted</th><th>Decision</th></tr></thead>
@@ -746,7 +754,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </tbody>
  </table></div>
 
- <div class="pm-charter">
+ <div class="pm-charter" id="project-charter">
   <p class="eyebrow">Project charter</p>
   <h3>Campaign close and pledge collection</h3>
   <p class="caption">The campaign is complete. The remaining work is collecting what was pledged, honoring restrictions and showing donors what their gifts did.</p>
@@ -780,7 +788,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </div>
  </div>
 
- <h3 class="sub">RAID and benefits</h3>
+ <h3 class="sub" id="project-raid">RAID and benefits</h3>
  <div class="two">
   <div class="panel">
    <h3>RAID</h3>
@@ -1305,6 +1313,57 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   host.innerHTML = `<div class="rp-grid"><div class="rp-pick" role="tablist" aria-label="Sample reports">${L.map((x, i) => `${i === 0 || L[i - 1][3] !== x[3] ? `<p class="rp-grp ${x[3]}">${TIER[x[3]][0]}<small>${TIER[x[3]][1]}</small></p>` : ''}<button type="button" role="tab" class="rp-b" data-rk="${x[0]}" aria-selected="${i ? 'false' : 'true'}"><span>${E(x[1])}</span><b>${E(x[2])}</b></button>`).join('')}<a class="button rp-pdf" href="BCH_Sample_Reports.pdf" data-pdffile="BCH_Sample_Reports.pdf">All seven as PDF</a></div><div class="rp-view" role="tabpanel"></div></div>`;
   host.querySelector('.rp-view').innerHTML = html('week');
   document.addEventListener('click', e => { const b = e.target.closest('.rp-b'); if (!b) return; const grid = b.closest('.rp-grid'), v = grid.querySelector('.rp-view'), inPop = !!b.closest('dialog'); v.style.opacity = 0; setTimeout(() => { grid.querySelectorAll('.rp-b').forEach(x => x.setAttribute('aria-selected', String(x === b))); v.innerHTML = html(b.dataset.rk); if (inPop) { const sc = b.closest('.jp-body'); if (sc) sc.scrollTop = 0; } else { const top = grid.getBoundingClientRect().top + scrollY - 90; if (scrollY > top) scrollTo({top, behavior: 'instant'}); } v.style.opacity = 1; }, 140); });
+})();
+
+/* ---------- top-nav sub-index ---------- */
+(function(){
+ const menu = document.getElementById('subindex');
+ const nav = document.querySelector('.primary-nav');
+ if (!menu || !nav) return;
+ const MAP = {
+  '#overview':[['At a glance','overview'],['Metrics','overview'],['Contents','overview']],
+  '#reports':[['Seven sample reports','reports'],['Report index','reports']],
+  '#work':[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']],
+  '#measures':[['Four targets','targets'],['Pilot economics','pilot-econ']],
+  '#ready':[['30-day readiness','readiness'],['Decision rights','decision-rights']],
+  '#value':[['Campaign context','value'],['Four reporting commitments','value']],
+  '#approach':[['90-day plan','approach'],['Review gates','review']],
+  '#review':[['Three gates','review'],['Four outcomes','review']],
+  '#coverage':[['27 responsibilities','coverage']]
+ };
+ let timer, current = null;
+ const close = () => { if (!menu) return; clearTimeout(timer); menu.hidden = true; nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-expanded','false')); current = null; };
+ const open = a => {
+  const items = MAP[a.getAttribute('href')]; if (!items) return;
+  current = a;
+  menu.innerHTML = `<p class="dh">Sub-index · ${a.querySelector('.w') ? a.querySelector('.w').textContent : a.textContent.trim()}</p>` + items.map((x, i) => `<a href="#${x[1]}"><b>${String(i+1).padStart(2,'0')}</b><span>${x[0]}</span></a>`).join('');
+  menu.hidden = false;
+  nav.querySelectorAll('a').forEach(x => x.setAttribute('aria-expanded', String(x === a)));
+  const r = a.getBoundingClientRect(), w = Math.min(320, innerWidth - 32);
+  menu.style.left = Math.max(12, Math.min(r.left, innerWidth - w - 12)) + 'px';
+  menu.style.top = (r.bottom + 6) + 'px';
+ };
+ nav.querySelectorAll('a').forEach(a => {
+  a.setAttribute('aria-haspopup','true'); a.setAttribute('aria-expanded','false');
+  a.addEventListener('pointerenter', () => { clearTimeout(timer); open(a); });
+  a.addEventListener('pointerleave', () => { timer = setTimeout(close, 180); });
+  a.addEventListener('focus', () => open(a));
+  a.addEventListener('click', () => setTimeout(close, 0));
+ });
+ menu.addEventListener('pointerenter', () => clearTimeout(timer));
+ menu.addEventListener('pointerleave', () => { timer = setTimeout(close, 180); });
+ menu.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.getElementById(a.getAttribute('href').slice(1));
+  if (!t) return;
+  e.preventDefault(); close();
+  t.scrollIntoView({behavior:'smooth', block:'start'});
+  try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {}
+ });
+ document.addEventListener('pointerdown', e => { if (!menu.contains(e.target) && !e.target.closest('.primary-nav')) close(); });
+ document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+ addEventListener('scroll', close, {passive:true});
+ addEventListener('resize', close);
 })();
 
 </script>
