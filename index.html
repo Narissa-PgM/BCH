@@ -84,6 +84,22 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .contents a{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 12px 13px;text-decoration:none;color:var(--ink);min-height:100%}
 .contents a:hover{border-color:var(--accent)}
 .contents b{display:block;font-size:26px;line-height:1;color:var(--accent)}
+.index-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 -12px}
+.index-bar .eyebrow{margin:0}
+.index-btn{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:7px 11px;font-size:13px;font-weight:700;white-space:nowrap}
+.index-btn:hover{border-color:var(--accent);color:var(--accent)}
+.allindex{width:min(980px,96vw);max-height:88vh;border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:6px;padding:0;background:var(--paper);color:var(--ink)}
+.allindex::backdrop{background:var(--backdrop)}
+.ix-shell{display:flex;flex-direction:column;max-height:88vh}
+.ix-head{display:flex;justify-content:space-between;align-items:start;gap:16px;padding:20px 22px 14px;border-bottom:1px solid var(--line)}
+.ix-head h2{font-size:25px;margin:4px 0 0}.ix-head p{font-size:13.5px;color:var(--muted);margin-top:4px}
+.ix-close{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:6px 10px;font-size:13px}
+.ix-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:18px 22px 24px;overflow:auto}
+.ixgroup h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.ixgroup a{display:block;padding:5px 0;font-size:13.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-soft,var(--line))}
+.ixgroup a:hover{color:var(--accent)}
+@media(max-width:760px){.ix-body{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.ix-body{grid-template-columns:1fr}.index-bar{margin-top:18px}}
 .contents span{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin:6px 0 3px}
 .contents small{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
 .data-note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
@@ -492,7 +508,8 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="metric"><strong>3</strong><span>analysts hired and supervised</span><small>UAMS · including reviews</small></div>
  </div>
  <div class="metrics-note"><span>Career figures are from my own work history. Charts in the work samples use synthetic data; BC High facts link to the school’s own pages.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
- <nav class="contents" aria-label="Contents">
+ <div class="index-bar"><p class="eyebrow">Contents</p><button class="index-btn" id="allindex-btn" aria-haspopup="dialog">☰ Full index</button></div>
+<nav class="contents" aria-label="Contents">
   <a href="#ops"><b>O</b><span>Operations</span><small>Batch, close, systems and data</small></a>
   <a href="#projects"><b>P</b><span>Projects</span><small>Portfolio, priorities and gates</small></a>
   <a href="#work"><b>R</b><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
@@ -866,6 +883,12 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  <div class="footer-links"><a href="https://www.linkedin.com/in/narissara" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="career-profile.html">Career profile →</a><button data-sample="full">Complete work sample ↗</button><button data-sample="method">Sources &amp; assumptions ↗</button></div>
 </div></footer>
 
+<dialog id="allindex" class="allindex" aria-labelledby="ix-title">
+ <div class="ix-shell">
+  <header class="ix-head"><div><p class="eyebrow">Full index</p><h2 id="ix-title">Every section and sub-section</h2><p>Jump directly to any part of the portfolio.</p></div><button class="ix-close" type="button" id="ix-close">Close ×</button></header>
+  <div class="ix-body" id="ix-body"></div>
+ </div>
+</dialog>
 <dialog id="info" aria-labelledby="info-title"><button class="close" data-close-info>Close ×</button><p class="eyebrow">Definition</p><h3 id="info-title"></h3><p id="info-body"></p><dl id="info-dl"></dl></dialog>
 
 <dialog id="reader" aria-labelledby="reader-title" aria-describedby="reader-help"><div class="reader-bar"><div class="reader-title-block"><p class="eyebrow">Application evidence · interactive work sample</p><h2 id="reader-title">Work sample</h2></div><div class="reader-actions"><button data-sample="school-value">Controls &amp; KPIs</button><button data-full>Complete report</button><button data-reader-print disabled>Print / save PDF</button><button class="close-reader" data-close-reader aria-label="Close work sample and return to the index">Return to index <span aria-hidden="true">×</span></button></div></div><div class="reader-body"><div class="reader-loading" role="status">Opening the work sample…</div><iframe id="report-frame" title="Detailed advancement services work sample"></iframe></div><div class="reader-foot"><span id="reader-help">Work-sample data is synthetic · published school facts are cited</span><button data-sample="recon">Trace the figures ↗</button></div></dialog>
@@ -1410,6 +1433,38 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
  addEventListener('scroll', close, {passive:true});
  addEventListener('resize', close);
+})();
+
+/* ---------- full index ---------- */
+(function(){
+ const dlg = document.getElementById('allindex');
+ const body = document.getElementById('ix-body');
+ const openBtn = document.getElementById('allindex-btn');
+ const closeBtn = document.getElementById('ix-close');
+ if (!dlg || !body || !openBtn) return;
+ const GROUPS = [
+  ['Overview',[['At a glance','overview'],['Metrics','overview'],['Contents','overview']]],
+  ['Operations',[['Batch board','ops-batch'],['Close and audit','ops-close'],['System health','ops-systems'],['Data quality','ops-quality']]],
+  ['Projects',[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']]],
+  ['Role areas',[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']]],
+  ['SMARTER',[['S · Specific','work'],['M · Measurable','measures'],['A · Achievable','ready'],['R · Relevant','value'],['T · Time-bound','approach'],['E·R · Evaluated and revised','review']]],
+  ['Evidence',[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]]
+ ];
+ const open = () => {
+  body.innerHTML = GROUPS.map(([name, items]) => `<div class="ixgroup"><h3>${name}</h3>${items.map(([label,id]) => `<a href="#${id}">${label}</a>`).join('')}</div>`).join('');
+  dlg.showModal(); document.body.classList.add('modal-open');
+ };
+ openBtn.addEventListener('click', open);
+ closeBtn.addEventListener('click', () => dlg.close());
+ dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+ dlg.addEventListener('close', () => document.body.classList.remove('modal-open'));
+ body.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
+  e.preventDefault(); dlg.close();
+  t.scrollIntoView({behavior:'smooth', block:'start'});
+  try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {}
+ });
 })();
 
 </script>
