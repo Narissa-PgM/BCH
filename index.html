@@ -80,7 +80,7 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .metrics-note{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted);padding:8px 0 0}
 
 /* Contents index */
-.contents{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:26px 0 8px}
+.contents{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:26px 0 8px}
 .contents a{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 12px 13px;text-decoration:none;color:var(--ink);min-height:100%}
 .contents a:hover{border-color:var(--accent)}
 .contents b{display:block;font-size:26px;line-height:1;color:var(--accent)}
@@ -456,6 +456,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <a href="#ops"><b>O</b><span class="w">Operations</span></a>
   <a href="#projects"><b>P</b><span class="w">Projects</span></a>
   <a href="#work"><b>R</b><span class="w">Role areas</span></a>
+  <a href="#smarter"><b>S</b><span class="w">SMARTER</span></a>
   <a href="#evidence"><b>E</b><span class="w">Evidence</span></a>
  </nav>
  <button class="theme" id="theme-toggle" aria-label="Switch to dark appearance">Light</button>
@@ -495,6 +496,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <a href="#ops"><b>O</b><span>Operations</span><small>Batch, close, systems and data</small></a>
   <a href="#projects"><b>P</b><span>Projects</span><small>Portfolio, priorities and gates</small></a>
   <a href="#work"><b>R</b><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
+  <a href="#smarter"><b>S</b><span>SMARTER</span><small>The test behind each area</small></a>
   <a href="#evidence"><b>E</b><span>Evidence</span><small>Reports, targets, readiness and gates</small></a>
   <a href="#coverage"><b>27</b><span>Coverage</span><small>Every duty, with a work sample</small></a>
  </nav>
@@ -565,6 +567,19 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </div>
  </div>
  <div class="ops-note"><b>So what:</b> one held batch, one suppressed email and one class-year mapping are visible before they become a donor problem. The Director can see the queue, the close and the system health on one page.</div>
+</section>
+
+<!-- SMARTER -->
+<section class="block" id="smarter" aria-labelledby="smarter-title">
+ <header class="block-head"><span class="letter wide" aria-hidden="true">SMARTER</span><div><p class="eyebrow">The evaluation frame</p><h2 id="smarter-title">SMARTER is the test, not the table of contents</h2></div><p class="dek">The role areas are how the work is organized. SMARTER is how I test whether each area is specific, measurable, achievable, relevant, time-bound and reviewed.</p></header>
+ <div class="ev-index">
+  <a class="ev-card" href="#work"><b>S · Specific</b><span>Six role areas and 27 duties from the posting</span></a>
+  <a class="ev-card" href="#measures"><b>M · Measurable</b><span>Four targets with definitions, deadlines and pilot economics</span></a>
+  <a class="ev-card" href="#ready"><b>A · Achievable</b><span>Test access, parallel batch and decision rights</span></a>
+  <a class="ev-card" href="#value"><b>R · Relevant</b><span>BC High’s campaign, aid and reporting commitments</span></a>
+  <a class="ev-card" href="#approach"><b>T · Time-bound</b><span>The first 90 days and the review gates</span></a>
+  <a class="ev-card" href="#review"><b>E·R · Evaluated and revised</b><span>Three gates and four possible decisions</span></a>
+ </div>
 </section>
 
 <!-- EVIDENCE -->
@@ -1359,6 +1374,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   '#ops':[['Batch board','ops-batch'],['Close and audit','ops-close'],['System health','ops-systems'],['Data quality','ops-quality']],
   '#projects':[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']],
   '#work':[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']],
+  '#smarter':[['S · Specific','work'],['M · Measurable','measures'],['A · Achievable','ready'],['R · Relevant','value'],['T · Time-bound','approach'],['E·R · Evaluated and revised','review']],
   '#evidence':[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]
  };
  let timer, current = null;
