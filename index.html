@@ -125,7 +125,10 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .ev-card{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:14px 16px;text-decoration:none;color:var(--ink)}
 .ev-card:hover{border-color:var(--accent)}
 .ev-card b{display:block;font-size:16px;color:var(--accent);margin-bottom:3px}.ev-card span{display:block;font-size:13px;color:var(--muted)}
-.smarter-strip{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
+.smarter-block{margin:10px 0 12px}
+.smarter-cap{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.smarter-cap b{font-weight:700}
+.smarter-strip{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0;padding-top:0;border-top:0}
 .smarter-strip div{display:grid;grid-template-columns:20px 1fr;gap:5px;background:var(--soft);padding:4px 6px;font-size:11.5px;line-height:1.3;min-width:0}
 .smarter-strip b{display:grid;place-items:center;width:19px;height:19px;background:var(--pale);color:var(--accent);font-size:10.5px}
 .smarter-strip span{color:var(--muted)}.smarter-strip strong{color:var(--ink)}
@@ -1586,8 +1589,12 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   strip.className = 'smarter-strip';
   strip.setAttribute('aria-label','SMARTER for this role area');
   strip.innerHTML = rows.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('');
-  const action = card.querySelector('.card-action');
-  if (action) card.insertBefore(strip, action); else card.appendChild(strip);
+  const block = document.createElement('div');
+  block.className = 'smarter-block';
+  block.innerHTML = '<p class="smarter-cap"><b>SMARTER</b> · this area</p>';
+  block.appendChild(strip);
+  const desc = card.querySelector('.card-desc');
+  if (desc) desc.after(block); else card.appendChild(block);
  });
 })();
 
