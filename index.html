@@ -552,13 +552,13 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  <div class="metrics-note"><span>Public BC High facts and the posted team structure. Charts in the work samples use synthetic data.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
  <div class="index-bar"><p class="eyebrow">Contents</p></div>
 <nav class="contents" id="contents" aria-label="Contents">
+  <a href="#overview"><span>Plan</span><small>State, decisions and first 30 days</small></a>
   <a href="#ops"><span>Operations</span><small>Batch, close, systems and data</small></a>
   <a href="#projects"><span>Projects</span><small>Portfolio, priorities and gates</small></a>
   <a href="#work"><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
   <a href="#smarter"><span>SMARTER</span><small>The test behind each area</small></a>
   <a href="#evidence"><span>Evidence</span><small>Reports, targets, readiness and gates</small></a>
   <a href="#playbook"><span>Playbook</span><small>Definitions, lineage and report control</small></a>
-  <a href="#coverage"><span>Coverage</span><small>Every duty, with a work sample</small></a>
  </nav>
 </section>
 
@@ -831,12 +831,12 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
 <section class="block" id="smarter" aria-labelledby="smarter-title">
  <header class="block-head"><span class="letter wide" aria-hidden="true">SMARTER</span><div><p class="eyebrow">Evaluation frame</p><h2 id="smarter-title">SMARTER: how I test each role area</h2></div><p class="dek">SMARTER is applied inside each role area. These six checks show how the work is defined, measured, staffed, timed and reviewed.</p></header>
  <div class="ev-index">
-  <a class="ev-card" id="smarter-s" href="#work"><b>S · Specific</b><span>Six role areas and 27 duties from the posting</span></a>
-  <a class="ev-card" id="smarter-m" href="#measures"><b>M · Measurable</b><span>Four targets with definitions, deadlines and pilot economics</span></a>
-  <a class="ev-card" id="smarter-a" href="#ready"><b>A · Achievable</b><span>Test access, parallel batch and decision rights</span></a>
-  <a class="ev-card" id="smarter-r" href="#value"><b>R · Relevant</b><span>BC High’s campaign, aid and reporting commitments</span></a>
-  <a class="ev-card" id="smarter-t" href="#approach"><b>T · Time-bound</b><span>The first 90 days and the review gates</span></a>
-  <a class="ev-card" id="smarter-er" href="#review"><b>E·R · Evaluated and revised</b><span>Three gates and four possible decisions</span></a>
+  <a class="ev-card" id="smarter-s" href="#smarter-s" data-info="smarter-s"><b>S · Specific</b><span>Six role areas and 27 duties from the posting</span></a>
+  <a class="ev-card" id="smarter-m" href="#smarter-m" data-info="smarter-m"><b>M · Measurable</b><span>Four targets with definitions, deadlines and pilot economics</span></a>
+  <a class="ev-card" id="smarter-a" href="#smarter-a" data-info="smarter-a"><b>A · Achievable</b><span>Test access, parallel batch and decision rights</span></a>
+  <a class="ev-card" id="smarter-r" href="#smarter-r" data-info="smarter-r"><b>R · Relevant</b><span>BC High’s campaign, aid and reporting commitments</span></a>
+  <a class="ev-card" id="smarter-t" href="#smarter-t" data-info="smarter-t"><b>T · Time-bound</b><span>The first 90 days and the review gates</span></a>
+  <a class="ev-card" id="smarter-er" href="#smarter-er" data-info="smarter-er"><b>E·R · Evaluated and revised</b><span>Three gates and four possible decisions</span></a>
  </div>
 </section>
 
@@ -1309,7 +1309,13 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
     trace:{t:'Traceable released figure',b:'Any financial or impact figure released to donors, the Board or leadership.',d:[['Requires','Source, period and a named reviewer'],['Measure','Share of released figures carrying all three'],['Rule','No figure is released without review'],['Owner','Director'],['Target','100%, from the first release']]},
     close:{t:'Close cycle',b:'How long it takes to go from month end to a signed reconciliation.',d:[['Measure','Median business days from month end to signed tie-out'],['Baseline','Measured in the first 30 days'],['Owners','DBA prepares, Finance verifies, Director signs'],['Target','30% shorter by month 6']]},
     tieout:{t:'Signed tie-out',b:'A reconciliation that bridges CRM gift totals to the general ledger and the bank, with every difference explained.',d:[['Prepared by','DBA, as Finance liaison'],['Verified by','Finance: posting and cut-off'],['Signed by','Director: final review'],['Example','Synthetic June close: $48,000 posted + $4,500 settlement = $52,500 gross; $52,200 net after a $300 fee']]},
-    capacity:{t:'Valued capacity',b:'Staff hours the pilot frees for donor-facing work, valued at loaded hourly cost.',d:[['Counts','Hours saved on rework, chasing exceptions and manual reports'],['Excludes','Payroll savings, fundraising lift and avoided losses'],['Status','Synthetic base case, replaced by BC High’s baseline at day 30']]}
+    capacity:{t:'Valued capacity',b:'Staff hours the pilot frees for donor-facing work, valued at loaded hourly cost.',d:[['Counts','Hours saved on rework, chasing exceptions and manual reports'],['Excludes','Payroll savings, fundraising lift and avoided losses'],['Status','Synthetic base case, replaced by BC High’s baseline at day 30']]},
+    'smarter-s':{t:'S · Specific',b:'The work is named, owned and tied to the posting. Six role areas cover 27 duties.',d:[['Role areas','Gift processing, database and systems, stewardship, prospect development, staff, school partners'],['Evidence','27 responsibility table with prior experience and work sample'],['Owner','Director, Advancement Services']]},
+    'smarter-m':{t:'M · Measurable',b:'Each area has a target, a definition, a source and a review date.',d:[['Targets','Acknowledgments, aged exceptions, traceable releases and close cycle'],['Source','NXT, GL and the receipt log'],['Review','Days 30, 60 and 90']]},
+    'smarter-a':{t:'A · Achievable',b:'The work is matched to access, test environments, decision rights and a three-person team.',d:[['Needs','NXT test access, Finance reviewer, temporary peak help'],['Gate','Parallel batch and signed received-gift report by day 30'],['Owner','Director with Finance and IT']]},
+    'smarter-r':{t:'R · Relevant',b:'The work connects to the completed campaign, financial aid and the school’s stewardship commitments.',d:[['Campaign','$150M completed; pledges and restrictions remain'],['Aid','39% of students receive financial aid'],['Reporting','One definition per measure']]},
+    'smarter-t':{t:'T · Time-bound',b:'The first 90 days have gates at day 30, day 60 and day 90.',d:[['Day 30','Baseline and readiness'],['Day 60','Parallel cycle and donor report'],['Day 90','Scale, change or stop']]},
+    'smarter-er':{t:'E·R · Evaluated and revised',b:'Every gate produces a decision and a change to the plan.',d:[['Gates','Day 30, day 60 and day 90'],['Decisions','Continue, revise or stop'],['Evidence','Signed tie-out, reviewed report and gate note']]}
   };
   function openInfo(key, trigger) {
     const d = defs[key]; if (!d) return;
@@ -1638,6 +1644,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   const t = document.getElementById(a.getAttribute('href').slice(1));
   if (!t) return;
   e.preventDefault(); close();
+  if (t.hasAttribute('data-info')) { t.click(); return; }
   t.scrollIntoView({behavior:'smooth', block:'start'});
   try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {}
  });
@@ -1675,6 +1682,7 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   const a = e.target.closest('a[href^="#"]'); if (!a) return;
   const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
   e.preventDefault(); dlg.close();
+  if (t.hasAttribute('data-info')) { t.click(); return; }
   t.scrollIntoView({behavior:'smooth', block:'start'});
   try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {}
  });
