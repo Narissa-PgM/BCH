@@ -124,6 +124,12 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .frame-col h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
 .frame-col p{font-size:13.5px;color:var(--muted);margin:0 0 9px}.frame-col p strong{color:var(--ink)}
 .frame-note{font-size:12.5px!important;color:var(--muted)}
+.amdg-framework{margin-top:12px;padding:10px 11px;background:var(--soft);border-left:3px solid var(--gold)}
+.amdg-framework b{display:block;font-size:12px;letter-spacing:.04em;color:var(--ink);margin-bottom:4px}
+.amdg-framework p{font-size:12px!important;line-height:1.45;margin:0 0 6px!important}
+.amdg-framework span{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.amdg-steward{margin:6px 0 8px;padding:7px 8px;background:var(--soft);border-left:2px solid var(--gold);font-size:11px;line-height:1.4;color:var(--muted)}
+.amdg-steward b{color:var(--ink)}
 .frame-list{display:grid;grid-template-columns:24px 1fr;gap:7px 8px;margin:0;font-size:13px}
 .frame-list dt{font-weight:700;color:var(--accent);font-size:12px;line-height:1.5}
 .frame-list dd{margin:0;color:var(--muted)}.frame-list b{color:var(--ink)}
@@ -573,6 +579,11 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
     <p><strong>Ad Maiorem Dei Gloriam.</strong> For the greater glory of God.</p>
     <p>The Ignatian purpose test. It keeps an operation from becoming self-referential: the work has to serve students, donors and the school’s mission, not just the process.</p>
     <p class="frame-note">The check I apply to priorities, tradeoffs and how the team treats people.</p>
+    <div class="amdg-framework">
+     <b>AMDG donor reporting framework</b>
+     <p>In stewardship, every report answers four questions: what did the donor intend, what did the gift make possible, who did it serve, and where is the evidence?</p>
+     <span>Intent → Impact → Evidence → Stewardship</span>
+    </div>
    </div>
    <div class="frame-col">
     <h4>SMARTER</h4>
@@ -1691,6 +1702,12 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   box.innerHTML = `<p class="duties-cap"><b>Responsibilities</b><span>${duties.length} duties</span></p><ol>${duties.map(d => `<li>${esc(d)}</li>`).join('')}</ol>`;
   const smarter = card.querySelector('.smarter-block');
   if (smarter) smarter.before(box); else card.querySelector('.card-desc')?.after(box);
+  if (card.id === 'area-stewardship') {
+   const note = document.createElement('p');
+   note.className = 'amdg-steward';
+   note.innerHTML = '<b>AMDG donor reporting framework:</b> intent → impact → evidence → stewardship. Used in duties 14–16.';
+   box.after(note);
+  }
  });
 })();
 
