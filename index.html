@@ -1690,8 +1690,19 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  const nav = [...document.querySelectorAll('.primary-nav a')];
  const main = document.querySelector('main.wrap');
  let current = 'overview';
- const childGroup = {metrics:'overview',baseline:'overview','smarter-s':'smarter','smarter-m':'smarter','smarter-a':'smarter','smarter-r':'smarter','smarter-t':'smarter','smarter-er':'smarter'};
- const groupFor = id => childGroup[id] || Object.keys(groups).find(g => groups[g].includes(id)) || null;
+ const childGroup = {'smarter-s':'smarter','smarter-m':'smarter','smarter-a':'smarter','smarter-r':'smarter','smarter-t':'smarter','smarter-er':'smarter'};
+ const sectionIds = new Set(Object.values(groups).flat());
+ const groupFor = id => {
+  const direct = Object.keys(groups).find(g => groups[g].includes(id));
+  if (direct) return direct;
+  if (childGroup[id]) return childGroup[id];
+  let el = document.getElementById(id);
+  while (el && el !== document.body) {
+   if (el.id && sectionIds.has(el.id)) return Object.keys(groups).find(g => groups[g].includes(el.id));
+   el = el.parentElement;
+  }
+  return null;
+ };
  const paint = (group, scroll) => {
   const ids = new Set(groups[group] || ['overview']);
   all.forEach(el => el.hidden = !ids.has(el.id));
