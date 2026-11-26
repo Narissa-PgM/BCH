@@ -80,13 +80,14 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .metrics-note{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted);padding:8px 0 0}
 
 /* Contents index */
-.contents{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:26px 0 8px}
+.contents{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin:26px 0 8px}
 .contents a{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 12px 13px;text-decoration:none;color:var(--ink);min-height:100%}
 .contents a:hover{border-color:var(--accent)}
 .contents b{display:block;font-size:26px;line-height:1;color:var(--accent)}
 .index-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 -12px}
 .index-bar .eyebrow{margin:0}
 .index-btn{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:7px 11px;font-size:13px;font-weight:700;white-space:nowrap}
+.top-index{padding:7px 9px;font-size:12.5px}
 .index-btn:hover{border-color:var(--accent);color:var(--accent)}
 .allindex{width:min(980px,96vw);max-height:88vh;border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:6px;padding:0;background:var(--paper);color:var(--ink)}
 .allindex::backdrop{background:var(--backdrop)}
@@ -111,6 +112,15 @@ svg text{fill:var(--ink);font-family:var(--serif)}
 .subindex a b{color:var(--accent);font-size:11px}
 .primary-nav a:hover::after,.primary-nav a[aria-current]::after{content:'▾';font-size:9px;margin-left:2px;color:var(--muted);vertical-align:2px}
 .ev-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.brief-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px}
+.brief-card{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px}
+.brief-card b{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}.brief-card p{font-size:13px;color:var(--muted)}.brief-card strong{color:var(--ink)}
+.brief-intro{font-size:14px;color:var(--muted);margin:16px 0 0}
+.pb-flow{list-style:none;margin:0;padding:0;display:grid;gap:7px;counter-reset:pb}
+.pb-flow li{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;counter-increment:pb;font-size:13px}
+.pb-flow li::before{content:counter(pb);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pale);color:var(--accent);font-weight:700;font-size:12px}
+.pb-flow b{display:block;color:var(--ink);font-size:13px}.pb-flow span{display:block;color:var(--muted);font-size:12.5px}
+@media(max-width:900px){.brief-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.brief-grid{grid-template-columns:1fr}}
 .ev-card{display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--slate);padding:14px 16px;text-decoration:none;color:var(--ink)}
 .ev-card:hover{border-color:var(--accent)}
 .ev-card b{display:block;font-size:16px;color:var(--accent);margin-bottom:3px}.ev-card span{display:block;font-size:13px;color:var(--muted)}
@@ -468,13 +478,15 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
 <header class="topbar"><div class="wrap">
  <a href="#overview" class="brand" aria-label="Narissara Khomkhai, overview"><span class="monogram" aria-hidden="true">NK</span><span class="brand-name">Narissara Khomkhai</span></a>
  <nav class="primary-nav" aria-label="Portfolio index, organized by SMARTER">
-  <a href="#overview" aria-current="true"><b>·</b><span class="w">Overview</span></a>
-  <a href="#ops"><b>O</b><span class="w">Operations</span></a>
+  <a href="#overview" aria-current="true"><b>B</b><span class="w">Brief</span></a>
+  <a href="#ops"><b>O</b><span class="w">Ops</span></a>
   <a href="#projects"><b>P</b><span class="w">Projects</span></a>
   <a href="#work"><b>R</b><span class="w">Role areas</span></a>
   <a href="#smarter"><b>S</b><span class="w">SMARTER</span></a>
   <a href="#evidence"><b>E</b><span class="w">Evidence</span></a>
+  <a href="#playbook"><b>PB</b><span class="w">Playbook</span></a>
  </nav>
+ <button class="index-btn top-index" id="allindex-btn" aria-haspopup="dialog">☰ Full index</button>
  <button class="theme" id="theme-toggle" aria-label="Switch to dark appearance">Light</button>
  <div class="subindex" id="subindex" aria-label="Section sub-index" hidden></div>
 </div></header>
@@ -500,6 +512,32 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
  </aside>
 </section>
 
+<section aria-label="Brief for the Vice President">
+ <p class="eyebrow">The brief</p>
+ <p class="brief-intro">If the VP reads only this, the message should be: the numbers are controlled, the campaign close is the first priority, and here is what I need from you.</p>
+ <div class="brief-grid">
+  <div class="brief-card"><b>State</b><p><strong>Gift-to-GL is reconciled monthly.</strong> Close is targeted at day 6. January closed with $0 unexplained. One stock batch is held pending confirmation.</p></div>
+  <div class="brief-card"><b>Decisions I need</b><p><strong>NXT test access, a named Finance reviewer, spring appeal temporary help and a Blackbaud introduction.</strong> Those four unblock the first 30 days.</p></div>
+  <div class="brief-card"><b>90-day outcomes</b><p><strong>Day 6 close, ≥95% acknowledgments, 100% traceable releases and two trained backups</strong> for every critical process.</p></div>
+  <div class="brief-card"><b>Watch list</b><p><strong>Pledge schedule, NXT release and spring appeal capacity.</strong> Each has an owner, a date and a gate; none is hidden until the board report.</p></div>
+ </div>
+ <div class="panel" style="margin-top:16px">
+  <h3>What I would validate in the first 30 days</h3>
+  <p class="caption">The baseline is not assumed from this synthetic sample. These are the first checks before any target is final.</p>
+  <div class="table-scroll"><table class="ops-table">
+   <thead><tr><th>Baseline</th><th>Source</th><th>Owner</th><th>By</th></tr></thead>
+   <tbody>
+    <tr><td>Gift volume and peak week</td><td>NXT and GL history</td><td>Director</td><td>Day 15</td></tr>
+    <tr><td>Close cycle and unexplained items</td><td>January and February close</td><td>Director and Finance</td><td>Day 20</td></tr>
+    <tr><td>Exception and duplicate rate</td><td>5% audit sample and NXT queries</td><td>Data Analyst</td><td>Day 20</td></tr>
+    <tr><td>Receipt and acknowledgment time</td><td>Receipt log</td><td>Director</td><td>Day 15</td></tr>
+    <tr><td>Team coverage and single points of failure</td><td>Coverage matrix and interviews</td><td>Director</td><td>Day 10</td></tr>
+    <tr><td>NXT and Blackbaud open issues</td><td>Release and known-issue log</td><td>Director and DBA</td><td>Day 10</td></tr>
+   </tbody>
+  </table></div>
+ </div>
+</section>
+
 <section aria-label="Experience at a glance">
  <div class="metrics">
   <div class="metric"><strong>20,000+</strong><span>gift transactions a year</span><small>UAMS · reconciled to the ledger</small></div>
@@ -508,13 +546,14 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   <div class="metric"><strong>3</strong><span>analysts hired and supervised</span><small>UAMS · including reviews</small></div>
  </div>
  <div class="metrics-note"><span>Career figures are from my own work history. Charts in the work samples use synthetic data; BC High facts link to the school’s own pages.</span><button class="text-link" data-sample="recon">Figure notes ↗</button></div>
- <div class="index-bar"><p class="eyebrow">Contents</p><button class="index-btn" id="allindex-btn" aria-haspopup="dialog">☰ Full index</button></div>
+ <div class="index-bar"><p class="eyebrow">Contents</p></div>
 <nav class="contents" aria-label="Contents">
   <a href="#ops"><b>O</b><span>Operations</span><small>Batch, close, systems and data</small></a>
   <a href="#projects"><b>P</b><span>Projects</span><small>Portfolio, priorities and gates</small></a>
   <a href="#work"><b>R</b><span>Role areas</span><small>Six areas, 27 responsibilities</small></a>
   <a href="#smarter"><b>S</b><span>SMARTER</span><small>The test behind each area</small></a>
   <a href="#evidence"><b>E</b><span>Evidence</span><small>Reports, targets, readiness and gates</small></a>
+  <a href="#playbook"><b>PB</b><span>Playbook</span><small>Definitions, lineage and report control</small></a>
   <a href="#coverage"><b>27</b><span>Coverage</span><small>Every duty, with a work sample</small></a>
  </nav>
 </section>
@@ -864,6 +903,63 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   </div>
  </div>
  <p class="ops-note"><b>Annual portfolio review:</b> March request log, April scoring and capacity test, May portfolio decision with the VP, June published slate. The stop list is reviewed with the same rigor as the start list.</p>
+</section>
+
+<!-- PLAYBOOK -->
+<section class="block" id="playbook" aria-labelledby="playbook-title">
+ <header class="block-head"><span class="letter wide" aria-hidden="true">PB</span><div><p class="eyebrow">Playbook · source of truth</p><h2 id="playbook-title">How a number earns the right to be repeated</h2></div><p class="dek">A dashboard is not a source of truth. A controlled report has one definition, one source, one owner, one review and one version.</p></header>
+ <div class="three">
+  <div class="panel">
+   <h3>One definition per measure</h3>
+   <div class="table-scroll"><table class="ops-table">
+    <thead><tr><th>Measure</th><th>Definition</th><th>Source / owner</th></tr></thead>
+    <tbody>
+     <tr><td>Gifts posted</td><td>Accepted gifts posted to the CRM for the period</td><td>NXT · Director</td></tr>
+     <tr><td>Receipts</td><td>Cash and securities received, net of fees</td><td>Bank and NXT · Finance</td></tr>
+     <tr><td>Unexplained variance</td><td>CRM-to-GL difference without a supportable explanation</td><td>GL close · Finance</td></tr>
+     <tr><td>Acknowledgment rate</td><td>Eligible gifts acknowledged within 3 business days</td><td>NXT and receipt log · Director</td></tr>
+     <tr><td>Data health</td><td>Open issues divided by active constituent records</td><td>NXT queries · Data Analyst</td></tr>
+     <tr><td>Pledge collected</td><td>Payments received against scheduled pledge amounts</td><td>NXT pledge schedule · Director</td></tr>
+    </tbody>
+   </table></div>
+  </div>
+  <div class="panel">
+   <h3>Lineage and control totals</h3>
+   <ol class="pb-flow">
+    <li><b>Source</b><span>NXT, bank, GL or pledge agreement</span></li>
+    <li><b>Rule</b><span>One documented filter, date and definition</span></li>
+    <li><b>Report</b><span>Report ID, as-of date and owner on the face</span></li>
+    <li><b>Review</b><span>Finance or a second reviewer signs the tie-out</span></li>
+    <li><b>Release</b><span>Version logged; prior versions retained</span></li>
+   </ol>
+   <p class="caption" style="margin-top:12px">Control totals: batch to deposit · CRM to GL · report to source · pledge to agreement.</p>
+  </div>
+  <div class="panel">
+   <h3>What is not a source of truth</h3>
+   <ul class="needs">
+    <li>A slide pasted from an old extract</li>
+    <li>An ad hoc query with no date or owner</li>
+    <li>An email total that cannot be reproduced</li>
+    <li>A dashboard with no definition or refresh date</li>
+    <li>A merged record with no audit trail</li>
+   </ul>
+   <p class="caption">If it cannot be reproduced from the source, it is a conversation starter, not a number for the board.</p>
+  </div>
+ </div>
+ <div class="panel mt" style="margin-top:18px">
+  <h3>Report control block</h3>
+  <div class="table-scroll"><table class="ops-table">
+   <thead><tr><th>Report</th><th>As of</th><th>Owner</th><th>Status</th><th>Next review</th></tr></thead>
+   <tbody>
+    <tr><td>Weekly gift report</td><td>Feb 21, 2027</td><td>Director</td><td><span class="rag g">Released</span></td><td>Feb 28</td></tr>
+    <tr><td>January close</td><td>Jan 31, 2027</td><td>Director and Finance</td><td><span class="rag g">Signed</span></td><td>February close</td></tr>
+    <tr><td>Campaign pledge report</td><td>Jan 31, 2027</td><td>Director</td><td><span class="rag a">In review</span></td><td>Mar 26</td></tr>
+    <tr><td>Data health report</td><td>Feb 21, 2027</td><td>Data Analyst</td><td><span class="rag g">Released</span></td><td>Mar 7</td></tr>
+    <tr><td>Board Q2 report</td><td>Dec 31, 2026</td><td>VP and Director</td><td><span class="rag g">Released</span></td><td>Next board</td></tr>
+   </tbody>
+  </table></div>
+ </div>
+ <div class="ops-note"><b>Source-of-truth rule:</b> the number on the page must match the signed source report, and the report must name its source, owner, as-of date and reviewer. Synthetic data on this site is labeled; it is not BC High data.</div>
 </section>
 
 <!-- Coverage + downloads -->
@@ -1398,7 +1494,8 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   '#projects':[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']],
   '#work':[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']],
   '#smarter':[['S · Specific','work'],['M · Measurable','measures'],['A · Achievable','ready'],['R · Relevant','value'],['T · Time-bound','approach'],['E·R · Evaluated and revised','review']],
-  '#evidence':[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]
+  '#evidence':[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']],
+  '#playbook':[['Definitions','playbook'],['Lineage and control totals','playbook'],['What is not a source of truth','playbook'],['Report control block','playbook']]
  };
  let timer, current = null;
  const close = () => { if (!menu) return; clearTimeout(timer); menu.hidden = true; nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-expanded','false')); current = null; };
@@ -1448,7 +1545,8 @@ body.rp-print .rp-cover{padding-top:120px}body.rp-print .rp-cover h3{font-size:3
   ['Projects',[['Portfolio','project-portfolio'],['Prioritization','project-priorities'],['Campaign-close charter','project-charter'],['RAID and benefits','project-raid']]],
   ['Role areas',[['Gift processing','area-gifts'],['Database and systems','area-data'],['Stewardship','area-stewardship'],['Pipeline and analytics','area-analytics'],['Staff and team','area-team'],['School partners','area-partners']]],
   ['SMARTER',[['S · Specific','work'],['M · Measurable','measures'],['A · Achievable','ready'],['R · Relevant','value'],['T · Time-bound','approach'],['E·R · Evaluated and revised','review']]],
-  ['Evidence',[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]]
+  ['Evidence',[['Seven sample reports','reports'],['Four targets','measures'],['Ready by day 30','ready'],['First 90 days','approach'],['Three gates','review'],['27 responsibilities','coverage']]],
+  ['Playbook',[['Definitions','playbook'],['Lineage and control totals','playbook'],['What is not a source of truth','playbook'],['Report control block','playbook']]]
  ];
  const open = () => {
   body.innerHTML = GROUPS.map(([name, items]) => `<div class="ixgroup"><h3>${name}</h3>${items.map(([label,id]) => `<a href="#${id}">${label}</a>`).join('')}</div>`).join('');
