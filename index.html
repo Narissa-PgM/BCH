@@ -730,8 +730,46 @@ R['Monthly service scorecard']=(cats,ser,o)=>{const rows=o.rows,w=600,rh=34,h=ro
   g+=T(X0+SW+20,y+rh/2+4,last+r.u,'class="rp-val"')+T(X0+SW+100,y+rh/2+4,(r.up?'≥ ':'≤ ')+r.t+r.u,'class="rp-ax"')+`<rect x="${w-74}" y="${y+rh/2-9}" width="68" height="18" rx="9" fill="${col}" fill-opacity=".12"/>`+T(w-40,y+rh/2+4,ok?'Met':'Not yet',`text-anchor="middle" font-size="11.5" font-weight="700" fill="${col}"`)});
  return svg(w,h,g,'Monthly service scorecard with seven-month trends')+`<p class="rp-leg"><span><i style="background:#5b6b74;height:2px"></i>Seven-month trend</span><span><i style="background:${C.gold};height:2px"></i>Target</span><span><i style="background:${C.teal};border-radius:50%"></i>Met in January</span><span><i style="background:${C.red};border-radius:50%"></i>Not yet</span></p>`};
 })(window.VXR);
-</script></head>
-<body>
+</script><style id="nf-css">html,body{scroll-behavior:auto!important}
+main{transition:opacity .16s ease}
+html.nf-out main{opacity:0}
+@media(prefers-reduced-motion:reduce){main{transition:none}}
+</style></head>
+<body><script id="nf-js">/* Section changes: quick fade-out, jump, fade-in. Never an animated scroll. */
+(function(){
+'use strict';
+var D=document,H=D.documentElement;
+if(window.__navfade)return;window.__navfade=1;
+var inst=function(o){return o&&typeof o==='object'?Object.assign({},o,{behavior:'instant'}):o};
+var ws=window.scrollTo.bind(window),wb=window.scrollBy.bind(window);
+window.scrollTo=function(a,b){return typeof a==='object'?ws(inst(a)):ws(a,b)};window.scroll=window.scrollTo;
+window.scrollBy=function(a,b){return typeof a==='object'?wb(inst(a)):wb(a,b)};
+var siv=Element.prototype.scrollIntoView;Element.prototype.scrollIntoView=function(a){return siv.call(this,typeof a==='object'?inst(a):a)};
+['scrollTo','scroll','scrollBy'].forEach(function(k){var f=Element.prototype[k];if(f)Element.prototype[k]=function(a,b){return typeof a==='object'?f.call(this,inst(a)):f.call(this,a,b)}});
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var main=function(){return D.querySelector('main')};
+function isNav(t){
+ if(t.matches('a.skip,[aria-haspopup="dialog"],[data-info],[data-def],[download],[target]'))return false;
+ if(t.tagName==='A'){var h=t.getAttribute('href')||'';if(h.charAt(0)!=='#'||h.length<2)return false;var g=D.getElementById(decodeURIComponent(h.slice(1)));return !!g&&!g.closest('dialog')}
+ if(t.closest('dialog'))return t.matches('[data-go]:not([data-go*="#"])');
+ if(t.matches('[data-go]'))return t.getAttribute('data-go').indexOf('#')<0;
+ if(t.matches('[data-open^="go:"]'))return true;
+ var m=main();if(m&&m.contains(t))return false;
+ if(t.getAttribute('aria-selected')==='true')return false;
+ return t.matches('[role=tab],.tab,[aria-controls],button[class*="nav"],[class*="nav"] button,button[id*="Nav"]');
+}
+var busy=false;
+window.addEventListener('click',function(e){
+ if(e.__nf||busy||e.defaultPrevented||e.button>0||e.metaKey||e.ctrlKey||e.shiftKey)return;
+ var t=e.target.closest&&e.target.closest('a,button,[role=tab],[data-go],[data-open]');if(!t||!isNav(t))return;
+ var m=main();if(!m||reduce)return;
+ e.preventDefault();e.stopImmediatePropagation();busy=true;H.classList.add('nf-out');
+ setTimeout(function(){var ev=new MouseEvent('click',{bubbles:true,cancelable:true,view:window});ev.__nf=1;t.dispatchEvent(ev);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){H.classList.remove('nf-out');busy=false})})},150);
+ setTimeout(function(){H.classList.remove('nf-out');busy=false},900);
+},true);
+})();
+</script>
 <a class="skip" href="#work">Skip to the work samples</a>
 <header class="topbar"><div class="wrap">
  <a href="#overview" class="brand" aria-label="Narissara Khomkhai, overview"><span class="monogram" aria-hidden="true">NK</span><span class="brand-name">Narissara Khomkhai</span></a>
